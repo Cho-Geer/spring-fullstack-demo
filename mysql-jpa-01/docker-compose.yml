@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # 应用服务
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-dev}
+      - DB_URL=${DB_URL:-jdbc:mysql://mysql:3306/mysql_jpa_01?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+      - DB_USERNAME=${DB_USERNAME:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+      - REDIS_HOST=${REDIS_HOST:-redis}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - JWT_SECRET=${JWT_SECRET:-mySecretKey123456789012345678901234567890abcdefghijklmnopqrstuvwxyz}
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password}
+      MYSQL_DATABASE: library_db
+      MYSQL_USER: ${DB_USERNAME:-appuser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes ${REDIS_PASSWORD:+--requirepass $REDIS_PASSWORD}
+
+  # 开发环境 - 仅包含Redis（使用H2数据库）
+  app-dev:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    networks:
+      - app-network
+    restart: unless-stopped
+    profiles:
+      - dev
+
+  # 测试环境
+  app-test:
+    build: .
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+      - REDIS_HOST=redis
+      - REDIS_DATABASE=1
+    depends_on:
+      - redis
+    networks:
+      - app-network
+    restart: unless-stopped
+    profiles:
+      - test
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge

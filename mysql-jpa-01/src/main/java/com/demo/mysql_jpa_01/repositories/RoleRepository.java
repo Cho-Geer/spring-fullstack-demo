@@ -31,24 +31,42 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
     /**
      * 查找所有启用的角色
      */
-    @Query("SELECT r FROM RoleEntity r WHERE r.status = 1 AND r.isDeleted = 0")
+    @Query("SELECT r FROM RoleEntity r WHERE r.status = true AND r.isDeleted = false")
     List<RoleEntity> findAllActiveRoles();
     
     /**
      * 根据角色名查找启用的角色
      */
-    @Query("SELECT r FROM RoleEntity r WHERE r.name = :name AND r.status = 1 AND r.isDeleted = 0")
+    @Query("SELECT r FROM RoleEntity r WHERE r.name = :name AND r.status = true AND r.isDeleted = false")
     Optional<RoleEntity> findActiveRoleByName(@Param("name") String name);
     
     /**
      * 根据用户ID查找角色
      */
-    @Query("SELECT r FROM RoleEntity r JOIN r.users u WHERE u.id = :userId AND r.status = 1 AND r.isDeleted = 0")
+    @Query("SELECT r FROM RoleEntity r JOIN r.users u WHERE u.id = :userId AND r.status = true AND r.isDeleted = false")
     List<RoleEntity> findRolesByUserId(@Param("userId") Long userId);
     
     /**
      * 查找默认角色（通常是ROLE_USER）
      */
-    @Query("SELECT r FROM RoleEntity r WHERE r.name = 'ROLE_USER' AND r.status = 1 AND r.isDeleted = 0")
+    @Query("SELECT r FROM RoleEntity r WHERE r.name = 'ROLE_USER' AND r.status = true AND r.isDeleted = false")
     Optional<RoleEntity> findDefaultRole();
+    
+    /**
+     * 根据权限代码查找拥有该权限的角色
+     */
+    @Query("SELECT r FROM RoleEntity r JOIN r.permissions p WHERE p.permissionCode = :permissionCode AND r.status = true AND r.isDeleted = false")
+    List<RoleEntity> findRolesByPermissionCode(@Param("permissionCode") String permissionCode);
+    
+    /**
+     * 根据权限ID查找拥有该权限的角色
+     */
+    @Query("SELECT r FROM RoleEntity r JOIN r.permissions p WHERE p.id = :permissionId AND r.status = true AND r.isDeleted = false")
+    List<RoleEntity> findRolesByPermissionId(@Param("permissionId") Long permissionId);
+    
+    /**
+     * 查找拥有指定权限集合的角色
+     */
+    @Query("SELECT DISTINCT r FROM RoleEntity r JOIN r.permissions p WHERE p.permissionCode IN :permissionCodes AND r.status = true AND r.isDeleted = false")
+    List<RoleEntity> findRolesByPermissionCodes(@Param("permissionCodes") Set<String> permissionCodes);
 }

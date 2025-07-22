@@ -21,55 +21,64 @@ public class UserEntity extends BaseEntity implements UserDetails {
     /**
      * 用户名
      */
-    @Column(name = "username", unique = true, nullable = false, length = 50, columnDefinition = "varchar(50) comment '用户名'")
+    // @Column(name = "username", unique = true, nullable = false, length = 50, columnDefinition = "varchar(50) /* comment '用户名' */")
+    @Column(name = "username", unique = true, nullable = false, length = 50)
     private String username;
     
     /**
      * 邮箱
      */
-    @Column(name = "email", unique = true, nullable = false, length = 100, columnDefinition = "varchar(100) comment '邮箱'")
+    // @Column(name = "email", unique = true, nullable = false, length = 100, columnDefinition = "varchar(100) /* comment '邮箱' */")
+    @Column(name = "email", unique = true, nullable = false, length = 100)
     private String email;
     
     /**
      * 密码（加密后）
      */
-    @Column(name = "password", nullable = false, length = 255, columnDefinition = "varchar(255) comment '密码'")
+    // @Column(name = "password", nullable = false, length = 255, columnDefinition = "varchar(255) /* comment '密码' */")
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
     
     /**
      * 真实姓名
      */
-    @Column(name = "real_name", length = 50, columnDefinition = "varchar(50) comment '真实姓名'")
+    // @Column(name = "real_name", length = 50, columnDefinition = "varchar(50) /* comment '真实姓名' */")
+    @Column(name = "real_name", length = 50)
     private String realName;
     
     /**
      * 手机号
      */
-    @Column(name = "phone", length = 11, columnDefinition = "varchar(11) comment '手机号'")
+    // @Column(name = "phone", length = 11, columnDefinition = "varchar(11) /* comment '手机号' */")
+    @Column(name = "phone", length = 11)
     private String phone;
     
     /**
      * 账户是否启用
      */
-    @Column(name = "enabled", nullable = false, columnDefinition = "tinyint(1) default 1 comment '账户是否启用（1启用，0禁用）'")
+    // @Column(name = "enabled", nullable = false, columnDefinition = "tinyint(1) default 1 /* comment '账户是否启用（1启用，0禁用）' */")
+    @Column(name = "enabled", nullable = false)
     private Boolean enabled = true;
     
     /**
      * 账户是否未过期
      */
-    @Column(name = "account_non_expired", nullable = false, columnDefinition = "tinyint(1) default 1 comment '账户是否未过期（1未过期，0已过期）'")
+    // @Column(name = "account_non_expired", nullable = false, columnDefinition = "tinyint(1) default 1 /* comment '账户是否未过期（1未过期，0已过期）' */")
+    @Column(name = "account_non_expired", nullable = false)
     private Boolean accountNonExpired = true;
     
     /**
      * 账户是否未锁定
      */
-    @Column(name = "account_non_locked", nullable = false, columnDefinition = "tinyint(1) default 1 comment '账户是否未锁定（1未锁定，0已锁定）'")
+    // @Column(name = "account_non_locked", nullable = false, columnDefinition = "tinyint(1) default 1 /* comment '账户是否未锁定（1未锁定，0已锁定）' */")
+    @Column(name = "account_non_locked", nullable = false)
     private Boolean accountNonLocked = true;
     
     /**
      * 凭证是否未过期
      */
-    @Column(name = "credentials_non_expired", nullable = false, columnDefinition = "tinyint(1) default 1 comment '凭证是否未过期（1未过期，0已过期）'")
+    // @Column(name = "credentials_non_expired", nullable = false, columnDefinition = "tinyint(1) default 1 /* comment '凭证是否未过期（1未过期，0已过期）' */")
+    @Column(name = "credentials_non_expired", nullable = false)
     private Boolean credentialsNonExpired = true;
     
     /**
@@ -139,5 +148,31 @@ public class UserEntity extends BaseEntity implements UserDetails {
     public void removeRole(RoleEntity role) {
         this.roles.remove(role);
         role.getUsers().remove(this);
+    }
+    
+    /**
+     * 获取用户的所有权限代码
+     */
+    public Set<String> getPermissions() {
+        return roles.stream()
+                .flatMap(role -> role.getPermissions().stream())
+                .map(PermissionEntity::getPermissionCode)
+                .collect(Collectors.toSet());
+    }
+    
+    /**
+     * 检查用户是否拥有指定权限
+     */
+    public boolean hasPermission(String permissionCode) {
+        return roles.stream()
+                .anyMatch(role -> role.hasPermission(permissionCode));
+    }
+    
+    /**
+     * 检查用户是否拥有指定角色
+     */
+    public boolean hasRole(String roleName) {
+        return roles.stream()
+                .anyMatch(role -> role.getName().equals(roleName));
     }
 }

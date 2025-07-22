@@ -1,0 +1,1 @@
+INSERT INTO users (id, username, email, password, enabled, is_deleted, account_non_expired, account_non_locked, credentials_non_expired, created_at, updated_at, created_by, modified_by) VALUES (1, 'testuser', 'testuser@example.com', '$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6', true, false, true, true, true, NOW(), NOW(), 'system', 'system');

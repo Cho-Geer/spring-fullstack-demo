@@ -1,9 +1,12 @@
 package com.demo.mysql_jpa_01.config;
 
+import com.demo.mysql_jpa_01.security.FilterChainDebugger;
 import com.demo.mysql_jpa_01.security.JwtAccessDeniedHandler;
 import com.demo.mysql_jpa_01.security.JwtAuthenticationEntryPoint;
 import com.demo.mysql_jpa_01.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,18 +38,23 @@ import java.util.List;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true) // 启用方法级安全注解
 @RequiredArgsConstructor
+@Slf4j
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserDetailsService userDetailsService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+    private final FilterChainDebugger filterChainDebugger;
 
     /**
      * 安全过滤器链配置
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // 添加过滤器调试日志
+        log.debug("配置SecurityFilterChain");
+        
         http
             // 禁用CSRF（JWT无状态认证不需要）
             .csrf(AbstractHttpConfigurer::disable)
@@ -62,6 +70,9 @@ public class SecurityConfig {
             // 配置认证提供者
             .authenticationProvider(authenticationProvider())
             
+            // 添加过滤器链调试器（放在最前面，以便记录所有过滤器的执行）
+            .addFilterBefore(filterChainDebugger, UsernamePasswordAuthenticationFilter.class)
+            
             // 添加JWT认证过滤器
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             
@@ -72,13 +83,17 @@ public class SecurityConfig {
             )
             
             // 配置授权规则
-            .authorizeHttpRequests(auth -> auth
+            .authorizeHttpRequests(auth -> {
+                log.debug("配置授权规则");
+                auth
                 // 公开端点 - 不需要认证
                 .requestMatchers(
-                    "/api/auth/**",           // 认证相关接口
-                    "/api/public/**",        // 公开API
-                    "/api/test/public",      // 测试公开接口
-                    "/api/test/health",      // 测试健康检查
+                    "/auth/**",           // 认证相关接口
+                    "/public/**",        // 公开API
+                    "/test/public",      // 测试公开接口
+                    "/test/health",      // 测试健康检查
+                    "/error",            // 错误处理端点
+                    "/api/error",        // API错误处理端点
                     "/",                     // 首页
                     "/login",                // 登录页面
                     "/register",             // 注册页面
@@ -102,8 +117,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/permissions/**").hasAuthority("PERMISSION_MANAGE")
                 
                 // 其他所有请求都需要认证
-                .anyRequest().authenticated()
-            );
+                .anyRequest().authenticated();
+            });
         
         return http.build();
     }

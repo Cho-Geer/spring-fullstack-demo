@@ -2,6 +2,11 @@ package com.demo.mysql_jpa_01.services;  // 包声明
 
 import com.demo.mysql_jpa_01.controllers.AuthController.LoginRequest;  // 导入登录请求类
 import com.demo.mysql_jpa_01.controllers.AuthController.RefreshTokenRequest;  // 导入刷新令牌请求类
+import com.demo.mysql_jpa_01.controllers.AuthController.RegisterRequest;  // 导入注册请求类
+import com.demo.mysql_jpa_01.entities.UserEntity;  // 导入用户实体类
+import com.demo.mysql_jpa_01.entities.RoleEntity;  // 导入角色实体类
+import com.demo.mysql_jpa_01.repositories.UserRepository;  // 导入用户仓库
+import com.demo.mysql_jpa_01.repositories.RoleRepository;  // 导入角色仓库
 import com.demo.mysql_jpa_01.utils.JwtUtils;  // 导入JWT工具类
 import jakarta.servlet.http.HttpServletRequest;  // 导入HTTP请求类
 import lombok.RequiredArgsConstructor;  // 导入Lombok注解
@@ -12,7 +17,9 @@ import org.springframework.security.core.Authentication;  // 导入认证接口
 import org.springframework.security.core.AuthenticationException;  // 导入认证异常
 import org.springframework.security.core.context.SecurityContextHolder;  // 导入安全上下文持有者
 import org.springframework.security.core.userdetails.UserDetails;  // 导入用户详情接口
+import org.springframework.security.crypto.password.PasswordEncoder;  // 导入密码编码器
 import org.springframework.stereotype.Service;  // 导入服务注解
+import org.springframework.transaction.annotation.Transactional;  // 导入事务注解
 import org.springframework.util.StringUtils;  // 导入字符串工具类
 
 import java.time.LocalDateTime;  // 导入本地日期时间类
@@ -31,6 +38,9 @@ public class AuthService {  // 类定义
     private final AuthenticationManager authenticationManager;  // 认证管理器字段
     private final JwtUtils jwtUtils;  // JWT 工具类字段
     private final SessionManagementService sessionManagementService;  // 会话管理服务字段
+    private final UserRepository userRepository;  // 用户仓库字段
+    private final RoleRepository roleRepository;  // 角色仓库字段
+    private final PasswordEncoder passwordEncoder;  // 密码编码器字段
 
     /**
      * 处理用户登录逻辑
@@ -87,6 +97,65 @@ public class AuthService {  // 类定义
             return response;  // 返回响应
         }  // 结束catch块
     }  // 结束登录方法
+
+    /**
+     * 处理用户注册逻辑
+     * @param registerRequest 注册请求
+     * @return 响应映射
+     */
+    @Transactional  // 事务注解
+    public Map<String, Object> register(RegisterRequest registerRequest) {  // 注册方法定义
+        Map<String, Object> response = new HashMap<>();  // 创建响应映射
+        try {  // 开始try块
+            // 检查用户名是否已存在
+            if (userRepository.existsByUsername(registerRequest.getUsername())) {  // 检查用户名是否存在
+                response.put("success", false);  // 设置成功标志为 false
+                response.put("message", "注册失败：用户名已存在");  // 设置错误消息
+                response.put("errorCode", "USERNAME_EXISTS");  // 设置错误代码
+                return response;  // 返回响应
+            }  // 结束if块
+            
+            // 检查邮箱是否已存在
+            if (userRepository.existsByEmail(registerRequest.getEmail())) {  // 检查邮箱是否存在
+                response.put("success", false);  // 设置成功标志为 false
+                response.put("message", "注册失败：邮箱已存在");  // 设置错误消息
+                response.put("errorCode", "EMAIL_EXISTS");  // 设置错误代码
+                return response;  // 返回响应
+            }  // 结束if块
+            
+            // 获取默认角色
+            RoleEntity defaultRole = roleRepository.findByName("ROLE_USER")  // 查找默认角色
+                    .orElseThrow(() -> new RuntimeException("默认角色不存在"));  // 抛出异常如果角色不存在
+            
+            // 创建新用户
+            UserEntity newUser = new UserEntity();  // 创建用户实体
+            newUser.setUsername(registerRequest.getUsername());  // 设置用户名
+            newUser.setEmail(registerRequest.getEmail());  // 设置邮箱
+            newUser.setPassword(passwordEncoder.encode(registerRequest.getPassword()));  // 编码并设置密码
+            newUser.setEnabled(true);  // 设置启用状态
+            newUser.getRoles().add(defaultRole);  // 添加默认角色
+            
+            // 保存用户
+            UserEntity savedUser = userRepository.save(newUser);  // 保存用户
+            
+            response.put("success", true);  // 设置成功标志为 true
+            response.put("message", "注册成功");  // 设置成功消息
+            response.put("username", savedUser.getUsername());  // 添加用户名
+            response.put("email", savedUser.getEmail());  // 添加邮箱
+            response.put("timestamp", LocalDateTime.now());  // 添加时间戳
+            
+            log.info("用户 {} 注册成功", savedUser.getUsername());  // 记录日志
+            return response;  // 返回响应
+            
+        } catch (Exception e) {  // 捕获异常
+            log.error("注册过程中发生错误: {}", e.getMessage(), e);  // 记录错误日志
+            response.put("success", false);  // 设置成功标志为 false
+            response.put("message", "注册失败：系统错误");  // 设置错误消息
+            response.put("errorCode", "SYSTEM_ERROR");  // 设置错误代码
+            response.put("timestamp", LocalDateTime.now());  // 添加时间戳
+            return response;  // 返回响应
+        }  // 结束catch块
+    }  // 结束注册方法
 
     /**
      * 处理用户登出逻辑

@@ -4,6 +4,9 @@ spring:
     name: mysql-jpa-01
   profiles:
     active: dev  # 默认激活开发环境
+  #### 方案1：允许循环引用（快速修复）
+  main:
+    allow-circular-references: true
 
 # 服务器配置
 server:
@@ -49,6 +52,8 @@ spring:
   config:
     activate:
       on-profile: dev
+  main:
+    allow-circular-references: true  # 添加这一行
   datasource:
     url: jdbc:h2:mem:testdb
     username: sa
@@ -87,6 +92,9 @@ logging:
   level:
     root: INFO
     org.springframework: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.web.FilterChainProxy: DEBUG
+    org.springframework.security.web.access: DEBUG
     org.hibernate: INFO
     org.hibernate.SQL: DEBUG
     org.hibernate.type: TRACE
@@ -113,6 +121,8 @@ spring:
   config:
     activate:
       on-profile: test
+  main:
+    allow-circular-references: true  # 添加这一行
   datasource:
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa

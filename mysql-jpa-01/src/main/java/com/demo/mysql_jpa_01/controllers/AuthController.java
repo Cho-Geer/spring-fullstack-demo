@@ -27,6 +27,24 @@ public class AuthController {
     private final AuthService authService;
 
     /**
+     * 用户注册
+     */
+    @PostMapping("/register")
+    @Operation(summary = "用户注册", description = "使用用户名、邮箱和密码进行注册")
+    public ResponseEntity<Map<String, Object>> register(@Valid @RequestBody RegisterRequest registerRequest) {
+        Map<String, Object> serviceResponse = authService.register(registerRequest);
+        if (!(Boolean) serviceResponse.get("success")) {
+            String errorCode = (String) serviceResponse.get("errorCode");
+            if ("USERNAME_EXISTS".equals(errorCode) || "EMAIL_EXISTS".equals(errorCode)) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(serviceResponse);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(serviceResponse);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(serviceResponse);
+    }
+
+    /**
      * 用户登录
      */
     @PostMapping("/login")
@@ -121,6 +139,39 @@ public class AuthController {
 
         public void setUsername(String username) {
             this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
+
+    /**
+     * 注册请求DTO
+     */
+    public static class RegisterRequest {
+        private String username;
+        private String email;
+        private String password;
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
         }
 
         public String getPassword() {

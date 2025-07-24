@@ -1,0 +1,374 @@
+/* 错误页面样式 */
+.error-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 头部样式 */
+.error-header {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.error-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: white;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误信息区域 */
+.error-info {
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.error-info h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.info-item span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.status-code {
+  font-weight: 700;
+  color: #28a745 !important;
+  font-size: 1.2rem !important;
+}
+
+.description {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.description p {
+  margin: 0;
+  color: #1565c0;
+  font-weight: 500;
+}
+
+/* 端点列表 */
+.endpoints-section {
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.endpoints-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.endpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.endpoint-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.endpoint-item:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.endpoint-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.endpoint-path {
+  background: #343a40;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.endpoint-desc {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.test-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+  background: #0056b3;
+}
+
+/* 错误处理类型 */
+.error-handling-section {
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.error-handling-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.error-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.error-type {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.error-code {
+  font-weight: 700;
+  color: #856404;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.error-desc {
+  color: #856404;
+  font-size: 0.9rem;
+}
+
+/* 演示区域 */
+.demo-section {
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.demo-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.demo-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.demo-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.error-404 {
+  background: #dc3545;
+  color: white;
+}
+
+.error-404:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.error-401 {
+  background: #fd7e14;
+  color: white;
+}
+
+.error-401:hover {
+  background: #e8690b;
+  transform: translateY(-2px);
+}
+
+.error-403 {
+  background: #6f42c1;
+  color: white;
+}
+
+.error-403:hover {
+  background: #5a32a3;
+  transform: translateY(-2px);
+}
+
+/* 页脚 */
+.error-footer {
+  padding: 30px;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+.error-footer p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.refresh-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.refresh-button:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+.retry-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.retry-button:hover {
+  background: #0056b3;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 1.1rem;
+  margin: 20px 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .error-page {
+    padding: 10px;
+  }
+  
+  .error-header {
+    padding: 30px 20px;
+  }
+  
+  .error-header h1 {
+    font-size: 2rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .endpoint-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .demo-buttons {
+    flex-direction: column;
+  }
+  
+  .demo-button {
+    width: 100%;
+  }
+}

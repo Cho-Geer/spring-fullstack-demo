@@ -20,14 +20,7 @@ function App() {
             <Route path="/error" element={<ErrorPage />} />
             
             {/* 受保护的路由 */}
-            <Route 
-              path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             
             {/* 默认重定向 */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />

@@ -151,6 +151,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                path.startsWith("/images/") ||
                path.startsWith("/favicon.ico") ||
                path.startsWith("/actuator/health") ||
+               path.startsWith("/h2-console/") ||
                path.equals("/error") ||
                path.equals("/api/error");
         

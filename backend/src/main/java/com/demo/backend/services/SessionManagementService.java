@@ -26,6 +26,9 @@ public class SessionManagementService {
     // token到用户的映射key前缀
     private static final String TOKEN_USER_PREFIX = "token:user:";
     
+    // token黑名单的Redis key前缀
+    private static final String TOKEN_BLACKLIST_PREFIX = "token:blacklist:";
+    
     // 最大并发会话数
     @Value("${app.security.concurrent.max-sessions:1}")
     private int maxSessions;
@@ -78,12 +81,18 @@ public class SessionManagementService {
     }
 
     /**
-     * 验证token是否有效（未被踢出）
+     * 验证token是否有效（未被踢出且不在黑名单中）
      * @param token JWT token
      * @return 是否有效
      */
     public boolean isTokenValid(String token) {
         try {
+            // 检查token是否在黑名单中
+            if (isTokenInBlacklist(token)) {
+                log.warn("Token在黑名单中: {}", token);
+                return false;
+            }
+            
             String tokenUserKey = TOKEN_USER_PREFIX + token;
             String username = (String) redisTemplate.opsForValue().get(tokenUserKey);
             
@@ -96,6 +105,36 @@ public class SessionManagementService {
             
         } catch (Exception e) {
             log.error("验证token有效性失败: {}", e.getMessage(), e);
+            return false;
+        }
+    }
+    
+    /**
+     * 将token添加到黑名单
+     * @param token JWT token
+     * @param expirationSeconds token剩余过期时间（秒）
+     */
+    public void addTokenToBlacklist(String token, long expirationSeconds) {
+        try {
+            String blacklistKey = TOKEN_BLACKLIST_PREFIX + token;
+            redisTemplate.opsForValue().set(blacklistKey, "1", expirationSeconds, TimeUnit.SECONDS);
+            log.info("Token已添加到黑名单: {}", token);
+        } catch (Exception e) {
+            log.error("添加token到黑名单失败: {}", e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * 检查token是否在黑名单中
+     * @param token JWT token
+     * @return 是否在黑名单中
+     */
+    public boolean isTokenInBlacklist(String token) {
+        try {
+            String blacklistKey = TOKEN_BLACKLIST_PREFIX + token;
+            return redisTemplate.hasKey(blacklistKey);
+        } catch (Exception e) {
+            log.error("检查token是否在黑名单中失败: {}", e.getMessage(), e);
             return false;
         }
     }

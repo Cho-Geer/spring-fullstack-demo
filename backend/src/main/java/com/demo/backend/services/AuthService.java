@@ -41,6 +41,7 @@ public class AuthService {  // 类定义
     private final UserRepository userRepository;  // 用户仓库字段
     private final RoleRepository roleRepository;  // 角色仓库字段
     private final PasswordEncoder passwordEncoder;  // 密码编码器字段
+    private final UserDetailsService userDetailsService;  // 用户详情服务字段
 
     /**
      * 处理用户登录逻辑
@@ -167,6 +168,11 @@ public class AuthService {  // 类定义
         try {  // 开始try块
             String token = extractTokenFromRequest(request);  // 提取令牌
             if (token != null) {  // 如果令牌存在
+                // 计算token剩余过期时间
+                long remainingTime = jwtUtils.getTokenRemainingTime(token);
+                // 将token添加到黑名单
+                sessionManagementService.addTokenToBlacklist(token, remainingTime);
+                // 移除用户令牌
                 sessionManagementService.removeUserToken(token);  // 移除用户令牌
                 SecurityContextHolder.clearContext();  // 清除安全上下文
                 log.info("用户登出成功，token已失效");  // 记录日志
@@ -201,17 +207,21 @@ public class AuthService {  // 类定义
                 return response;  // 返回响应
             }  // 结束if块
             String username = jwtUtils.extractUsername(refreshToken);  // 提取用户名
-            String newAccessToken = jwtUtils.generateTokenFromUsername(username);  // 生成新访问令牌
+            
+            // 生成新的accessToken和refreshToken
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            String newAccessToken = jwtUtils.generateToken(userDetails);  // 生成新访问令牌
+            String newRefreshToken = jwtUtils.generateRefreshToken(userDetails);  // 生成新刷新令牌
+            
             long expirationSeconds = jwtUtils.getExpirationTime() / 1000;  // 计算过期时间
-            String currentToken = extractTokenFromRequest(null);  // 提取当前令牌（可能需调整）
-            if (currentToken != null) {  // 如果当前令牌存在
-                sessionManagementService.refreshUserToken(currentToken, newAccessToken, expirationSeconds);  // 刷新用户令牌
-            } else {  // 否则
-                sessionManagementService.registerUserToken(username, newAccessToken, expirationSeconds);  // 注册用户令牌
-            }  // 结束else块
+            
+            // 刷新用户令牌
+            sessionManagementService.registerUserToken(username, newAccessToken, expirationSeconds);  // 注册用户令牌
+            
             response.put("success", true);  // 设置成功标志为 true
             response.put("message", "Token刷新成功");  // 设置成功消息
             response.put("accessToken", newAccessToken);  // 添加新访问令牌
+            response.put("refreshToken", newRefreshToken);  // 添加新刷新令牌
             response.put("tokenType", "Bearer");  // 设置令牌类型
             response.put("expiresIn", expirationSeconds);  // 添加过期时间
             response.put("timestamp", LocalDateTime.now());  // 添加时间戳

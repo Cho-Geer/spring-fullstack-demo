@@ -1,4 +1,5 @@
 import api from './api';
+import secureStorage from '../utils/secureStorage';
 
 export interface RegisterRequest {
   username: string;
@@ -50,17 +51,25 @@ class AuthService {
   // 用户登录
   async login(loginData: LoginRequest): Promise<AuthResponse> {
     try {
-      const response = await api.post('/auth/login', loginData);
+      const response = await api.post('/auth/login', loginData, {
+        withCredentials: true // 允许发送 Cookie，接收 HttpOnly Cookie
+      });
       const data = response.data;
-      
+        
       if (data.success && data.accessToken) {
-        // 保存token到localStorage
-        localStorage.setItem('accessToken', data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('authorities', JSON.stringify(data.authorities));
+        // 使用安全的存储方式，只存储accessToken
+        secureStorage.saveTokens(data.accessToken);
+          
+        // 保存非敏感的用户信息到 localStorage
+        if (data.username && data.authorities) {
+          secureStorage.saveUserInfo(
+            data.username,
+            data.email || '',
+            data.authorities
+          );
+        }
       }
-      
+        
       return data;
     } catch (error: any) {
       if (error.response?.data) {
@@ -77,41 +86,41 @@ class AuthService {
   // 用户登出
   async logout(): Promise<void> {
     try {
-      await api.post('/auth/logout');
+      // 发送登出请求，后端会清除 HttpOnly Cookie
+      await api.post('/auth/logout', {}, { withCredentials: true });
     } catch (error) {
       console.error('登出请求失败:', error);
     } finally {
       // 无论请求是否成功，都清除本地存储
-      this.clearLocalStorage();
+      secureStorage.clearTokens();
+      secureStorage.clearUserInfo();
     }
   }
 
-  // 刷新token
+  // 刷新 token
   async refreshToken(): Promise<AuthResponse> {
     try {
-      const refreshToken = localStorage.getItem('refreshToken');
-      if (!refreshToken) {
-        throw new Error('No refresh token available');
-      }
-      
-      const response = await api.post('/auth/refresh', {
-        refreshToken: refreshToken
+      // RefreshToken 在 HttpOnly Cookie 中，后端会自动读取
+      const response = await api.post('/auth/refresh', {}, {
+        withCredentials: true
       });
-      
+        
       const data = response.data;
       if (data.success && data.accessToken) {
-        localStorage.setItem('accessToken', data.accessToken);
+        // 更新 AccessToken
+        secureStorage.saveTokens(data.accessToken);
       }
-      
+        
       return data;
     } catch (error: any) {
-      this.clearLocalStorage();
+      secureStorage.clearTokens();
+      secureStorage.clearUserInfo();
       if (error.response?.data) {
         return error.response.data;
       }
       return {
         success: false,
-        message: '刷新token失败',
+        message: '刷新 token 失败',
         errorCode: 'REFRESH_FAILED'
       };
     }
@@ -119,44 +128,17 @@ class AuthService {
 
   // 检查是否已登录
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('accessToken');
-    return !!token;
+    return secureStorage.isAuthenticated();
   }
-
+  
   // 获取当前用户信息
   getCurrentUser(): User | null {
-    const username = localStorage.getItem('username');
-    const email = localStorage.getItem('email');
-    const authoritiesStr = localStorage.getItem('authorities');
-    
-    if (username && authoritiesStr) {
-      try {
-        const authorities = JSON.parse(authoritiesStr);
-        return {
-          username,
-          email: email || '',
-          authorities
-        };
-      } catch (error) {
-        console.error('解析用户权限失败:', error);
-      }
-    }
-    
-    return null;
+    return secureStorage.getCurrentUser();
   }
-
-  // 获取访问token
+  
+  // 获取访问 token
   getAccessToken(): string | null {
-    return localStorage.getItem('accessToken');
-  }
-
-  // 清除本地存储
-  private clearLocalStorage(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('username');
-    localStorage.removeItem('email');
-    localStorage.removeItem('authorities');
+    return secureStorage.getAccessToken();
   }
 }
 

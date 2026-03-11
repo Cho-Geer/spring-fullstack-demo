@@ -19,20 +19,19 @@ public class RedisConfig {
      * 设置key和value的序列化方式
      */
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         
-        // 设置key的序列化方式为String
+        // 使用StringRedisSerializer来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
+        // 使用StringRedisSerializer来序列化和反序列化redis的value值
+        template.setValueSerializer(new StringRedisSerializer());
+        
+        // Hash的key也采用StringRedisSerializer的序列化方式
         template.setHashKeySerializer(new StringRedisSerializer());
-        
-        // 设置value的序列化方式为JSON
-        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        template.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
-        
-        // 启用默认序列化
-        template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());
+        // Hash的value也采用StringRedisSerializer的序列化方式
+        template.setHashValueSerializer(new StringRedisSerializer());
         
         template.afterPropertiesSet();
         return template;

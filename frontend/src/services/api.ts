@@ -3,7 +3,7 @@ import secureStorage from '../utils/secureStorage';
 
 // 创建 axios 实例
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -36,12 +36,17 @@ api.interceptors.response.use(
     
     // 如果是 401 错误且未重试过，尝试刷新 token
     if (error.response?.status === 401 && !originalRequest._retry) {
+      // Prevent infinite loops if refresh token endpoint fails
+      if (originalRequest.url?.includes('/auth/refresh')) {
+        return Promise.reject(error);
+      }
+
       originalRequest._retry = true;
       
       try {
         // 调用刷新 token 接口，RefreshToken 在 HttpOnly Cookie 中
         const response = await axios.post(
-          'http://localhost:8080/api/auth/refresh',
+          `${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api'}/auth/refresh`,
           {},
           { withCredentials: true }
         );

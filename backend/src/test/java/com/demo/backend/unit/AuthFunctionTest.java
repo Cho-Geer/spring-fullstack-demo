@@ -58,14 +58,15 @@ class AuthFunctionTest {
         when(authService.login(any(LoginRequest.class))).thenReturn(serviceResponse);
 
         // 执行测试
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        ResponseEntity<Map<String, Object>> result = authController.login(loginRequest, response);
+        // HttpServletResponse response = mock(HttpServletResponse.class); // 不再需要
+        ResponseEntity<Map<String, Object>> result = authController.login(loginRequest);
 
         // 验证结果
         assertEquals(HttpStatus.OK, result.getStatusCode());
         assertTrue(result.getBody().containsKey("accessToken"));
         assertFalse(result.getBody().containsKey("refreshToken")); // refreshToken应该被移除
-        verify(response).addCookie(any(Cookie.class)); // 应该设置refreshToken Cookie
+        // verify(response).addCookie(any(Cookie.class)); // 不再通过response添加cookie
+        assertTrue(result.getHeaders().containsKey(org.springframework.http.HttpHeaders.SET_COOKIE)); // 验证Set-Cookie头
     }
 
     /**
@@ -80,12 +81,13 @@ class AuthFunctionTest {
 
         // 执行测试
         HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        ResponseEntity<Map<String, Object>> result = authController.logout(request, response);
+        // HttpServletResponse response = mock(HttpServletResponse.class); // 不再需要
+        ResponseEntity<Map<String, Object>> result = authController.logout(request);
 
         // 验证结果
         assertEquals(HttpStatus.OK, result.getStatusCode());
-        verify(response).addCookie(any(Cookie.class)); // 应该清除refreshToken Cookie
+        // verify(response).addCookie(any(Cookie.class)); // 不再通过response添加cookie
+        assertTrue(result.getHeaders().containsKey(org.springframework.http.HttpHeaders.SET_COOKIE)); // 验证Set-Cookie头
     }
 
     /**
@@ -106,14 +108,15 @@ class AuthFunctionTest {
         when(authService.refreshToken(any(RefreshTokenRequest.class))).thenReturn(serviceResponse);
 
         // 执行测试
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        ResponseEntity<Map<String, Object>> result = authController.refreshToken(request, response);
+        // HttpServletResponse response = mock(HttpServletResponse.class); // 不再需要
+        ResponseEntity<Map<String, Object>> result = authController.refreshToken(request);
 
         // 验证结果
         assertEquals(HttpStatus.OK, result.getStatusCode());
         assertTrue(result.getBody().containsKey("accessToken"));
         assertFalse(result.getBody().containsKey("refreshToken")); // refreshToken应该被移除
-        verify(response).addCookie(any(Cookie.class)); // 应该更新refreshToken Cookie
+        // verify(response).addCookie(any(Cookie.class)); // 不再通过response添加cookie
+        assertTrue(result.getHeaders().containsKey(org.springframework.http.HttpHeaders.SET_COOKIE)); // 验证Set-Cookie头
     }
 
     /**
@@ -134,8 +137,8 @@ class AuthFunctionTest {
         when(authService.login(any(LoginRequest.class))).thenReturn(serviceResponse);
 
         // 执行测试
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        ResponseEntity<Map<String, Object>> result = authController.login(loginRequest, response);
+        // HttpServletResponse response = mock(HttpServletResponse.class); // 不再需要
+        ResponseEntity<Map<String, Object>> result = authController.login(loginRequest);
 
         // 验证结果
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
@@ -160,12 +163,13 @@ class AuthFunctionTest {
         when(authService.refreshToken(any(RefreshTokenRequest.class))).thenReturn(serviceResponse);
 
         // 执行测试
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        ResponseEntity<Map<String, Object>> result = authController.refreshToken(request, response);
+        // HttpServletResponse response = mock(HttpServletResponse.class); // 不再需要
+        ResponseEntity<Map<String, Object>> result = authController.refreshToken(request);
 
         // 验证结果
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
         assertFalse(result.getBody().containsKey("accessToken"));
-        verify(response).addCookie(any(Cookie.class)); // 应该清除无效的refreshToken Cookie
+        // verify(response).addCookie(any(Cookie.class)); // 不再通过response添加cookie
+        assertTrue(result.getHeaders().containsKey(org.springframework.http.HttpHeaders.SET_COOKIE)); // 验证Set-Cookie头
     }
 }

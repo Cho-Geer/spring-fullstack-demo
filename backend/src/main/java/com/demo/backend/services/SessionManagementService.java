@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class SessionManagementService {
 
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
     // 用户活跃token的Redis key前缀
     private static final String USER_TOKENS_PREFIX = "user:tokens:";
@@ -50,7 +50,7 @@ public class SessionManagementService {
         
         try {
             // 获取用户当前的活跃token数量
-            Set<Object> currentTokens = (Set<Object>) redisTemplate.opsForZSet().range(userTokensKey, 0, -1);
+            Set<String> currentTokens = redisTemplate.opsForZSet().range(userTokensKey, 0, -1);
             int currentSessionCount = currentTokens != null ? currentTokens.size() : 0;
             
             // 检查是否超出最大会话数
@@ -75,7 +75,7 @@ public class SessionManagementService {
             return true;
             
         } catch (Exception e) {
-            log.error("注册用户token失败: {}", e.getMessage(), e);
+            log.error("注册用户token失败: {}", e.getMessage());
             return false;
         }
     }
@@ -89,12 +89,12 @@ public class SessionManagementService {
         try {
             // 检查token是否在黑名单中
             if (isTokenInBlacklist(token)) {
-                log.warn("Token在黑名单中: {}", token);
+                log.warn("Token在黑名单中");
                 return false;
             }
             
             String tokenUserKey = TOKEN_USER_PREFIX + token;
-            String username = (String) redisTemplate.opsForValue().get(tokenUserKey);
+            String username = redisTemplate.opsForValue().get(tokenUserKey);
             
             if (username == null) {
                 return false;
@@ -104,7 +104,7 @@ public class SessionManagementService {
             return redisTemplate.opsForZSet().score(userTokensKey, token) != null;
             
         } catch (Exception e) {
-            log.error("验证token有效性失败: {}", e.getMessage(), e);
+            log.error("验证token有效性失败: {}", e.getMessage());
             return false;
         }
     }
@@ -118,9 +118,9 @@ public class SessionManagementService {
         try {
             String blacklistKey = TOKEN_BLACKLIST_PREFIX + token;
             redisTemplate.opsForValue().set(blacklistKey, "1", expirationSeconds, TimeUnit.SECONDS);
-            log.info("Token已添加到黑名单: {}", token);
+            log.info("Token已添加到黑名单");
         } catch (Exception e) {
-            log.error("添加token到黑名单失败: {}", e.getMessage(), e);
+            log.error("添加token到黑名单失败: {}", e.getMessage());
         }
     }
     
@@ -146,7 +146,7 @@ public class SessionManagementService {
     public void removeUserToken(String token) {
         try {
             String tokenUserKey = TOKEN_USER_PREFIX + token;
-            String username = (String) redisTemplate.opsForValue().get(tokenUserKey);
+            String username = redisTemplate.opsForValue().get(tokenUserKey);
             
             if (username != null) {
                 String userTokensKey = USER_TOKENS_PREFIX + username;
@@ -157,7 +157,7 @@ public class SessionManagementService {
             }
             
         } catch (Exception e) {
-            log.error("移除用户token失败: {}", e.getMessage(), e);
+            log.error("移除用户token失败: {}", e.getMessage());
         }
     }
 
@@ -168,11 +168,11 @@ public class SessionManagementService {
     public void kickOutAllUserSessions(String username) {
         try {
             String userTokensKey = USER_TOKENS_PREFIX + username;
-            Set<Object> tokens = (Set<Object>) redisTemplate.opsForZSet().range(userTokensKey, 0, -1);
+            Set<String> tokens = redisTemplate.opsForZSet().range(userTokensKey, 0, -1);
             
             if (tokens != null && !tokens.isEmpty()) {
                 // 删除所有token到用户的映射
-                for (Object token : tokens) {
+                for (String token : tokens) {
                     String tokenUserKey = TOKEN_USER_PREFIX + token;
                     redisTemplate.delete(tokenUserKey);
                 }
@@ -184,7 +184,7 @@ public class SessionManagementService {
             }
             
         } catch (Exception e) {
-            log.error("踢出用户所有会话失败: {}", e.getMessage(), e);
+            log.error("踢出用户所有会话失败: {}", e.getMessage());
         }
     }
 
@@ -209,11 +209,11 @@ public class SessionManagementService {
      * 移除最旧的token
      * 在实际应用中，可以根据token的创建时间来确定最旧的token
      */
-    private void removeOldestToken(String username, Set<Object> currentTokens) {
+    private void removeOldestToken(String username, Set<String> currentTokens) {
         String userTokensKey = USER_TOKENS_PREFIX + username;
-        Set<Object> oldestSet = (Set<Object>) redisTemplate.opsForZSet().range(userTokensKey, 0, 0);
+        Set<String> oldestSet = redisTemplate.opsForZSet().range(userTokensKey, 0, 0);
         if (oldestSet != null && !oldestSet.isEmpty()) {
-            String oldestToken = (String) oldestSet.iterator().next();
+            String oldestToken = oldestSet.iterator().next();
             removeUserToken(oldestToken);
             log.info("用户 {} 的最旧token已被移除以腾出空间", username);
         }
@@ -228,7 +228,7 @@ public class SessionManagementService {
     public void refreshUserToken(String oldToken, String newToken, long expirationSeconds) {
         try {
             String tokenUserKey = TOKEN_USER_PREFIX + oldToken;
-            String username = (String) redisTemplate.opsForValue().get(tokenUserKey);
+            String username = redisTemplate.opsForValue().get(tokenUserKey);
             
             if (username != null) {
                 // 移除旧token
@@ -241,7 +241,7 @@ public class SessionManagementService {
             }
             
         } catch (Exception e) {
-            log.error("刷新用户token失败: {}", e.getMessage(), e);
+            log.error("刷新用户token失败: {}", e.getMessage());
         }
     }
 }

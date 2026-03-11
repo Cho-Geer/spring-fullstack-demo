@@ -4,9 +4,8 @@ spring:
     name: backend
   profiles:
     active: dev  # 默认激活开发环境
-  #### 方案1：允许循环引用（快速修复）
   main:
-    allow-circular-references: true
+    allow-circular-references: false # 明确禁止循环引用
 
 # 服务器配置
 server:
@@ -21,6 +20,8 @@ jwt:
 
 # 应用配置 - 通用配置
 app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
   security:
     # 密码策略
     password:
@@ -53,7 +54,7 @@ spring:
     activate:
       on-profile: dev
   main:
-    allow-circular-references: true  # 添加这一行
+    allow-circular-references: false  # 明确禁止循环引用
   datasource:
     url: jdbc:h2:mem:testdb
     username: sa
@@ -104,7 +105,7 @@ logging:
 
 # JWT配置 - 开发环境
 jwt:
-  secret: bXlTZWNyZXRLZXkxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OQ==
+  secret: ${JWT_SECRET:ZGV2X3NlY3JldF9rZXlfbXVzdF9iZV9hdF9sZWFzdF8zMl9ieXRlc19sb25nX2Zvcl9oczI1Nl9hbGdvcml0aG0=}
   expiration: 86400000      # 24小时 (毫秒)
   refresh-expiration: 604800000  # 7天 (毫秒)
 
@@ -122,7 +123,7 @@ spring:
     activate:
       on-profile: test
   main:
-    allow-circular-references: true  # 添加这一行
+    allow-circular-references: false  # 明确禁止循环引用
   datasource:
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
@@ -165,7 +166,7 @@ logging:
 
 # JWT配置 - 测试环境
 jwt:
-  secret: TXlTZWNyZXRLZXkxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OQ==
+  secret: ${JWT_SECRET:dGVzdF9zZWNyZXRfa2V5X211c3RfYmVfYXRfbGVhc3RfMzJfYnl0ZXNfbG9uZ19mb3JfaHMyNTZfYWxnb3JpdGht}
   expiration: 3600000       # 1小时 (毫秒) - 测试环境较短过期时间
   refresh-expiration: 86400000  # 1天 (毫秒)
 
@@ -184,7 +185,7 @@ spring:
       on-profile: prod
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/backend_prod?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true}
-    username: ${DB_USERNAME:root}
+    username: ${DB_USERNAME:appuser}
     password: ${DB_PASSWORD:}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:

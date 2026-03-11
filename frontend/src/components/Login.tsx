@@ -12,12 +12,19 @@ const Login: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
 
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   // 获取用户尝试访问的页面，登录成功后重定向
   const from = (location.state as any)?.from?.pathname || '/dashboard';
+
+  // 监听 isAuthenticated 变化，一旦变为 true，立即跳转
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, navigate, from, login]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -64,9 +71,8 @@ const Login: React.FC = () => {
       
       if (result.success) {
         setMessage('登录成功，正在跳转...');
-        setTimeout(() => {
-          navigate(from, { replace: true });
-        }, 1000);
+        navigate(from, { replace: true });
+        // 不需要手动 navigate，useEffect 会处理跳转
       } else {
         setMessage(result.message);
       }

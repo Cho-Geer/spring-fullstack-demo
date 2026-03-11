@@ -1,5 +1,6 @@
 import api from './api';
 import secureStorage from '../utils/secureStorage';
+import tokenUtils from '../utils/tokenUtils';
 
 export interface RegisterRequest {
   username: string;
@@ -14,12 +15,10 @@ export interface LoginRequest {
 
 export interface AuthResponse {
   success: boolean;
-  message: string;
   accessToken?: string;
   refreshToken?: string;
-  tokenType?: string;
-  expiresIn?: number;
-  username?: string;
+  user?: any;
+  message?: string;
   authorities?: string[];
   errorCode?: string;
 }
@@ -60,13 +59,17 @@ class AuthService {
         // 使用安全的存储方式，只存储accessToken
         secureStorage.saveTokens(data.accessToken);
           
+        // 如果后端没有返回 user 对象，尝试从 token 中解析
+        let userInfo = data.user;
+        if (!userInfo) {
+          userInfo = tokenUtils.getUserFromToken(data.accessToken);
+        }
+
         // 保存非敏感的用户信息到 localStorage
-        if (data.username && data.authorities) {
-          secureStorage.saveUserInfo(
-            data.username,
-            data.email || '',
-            data.authorities
-          );
+        if (userInfo) {
+          secureStorage.saveUserInfo(userInfo);
+          // 确保返回的数据中包含 user 对象，以便 AuthContext 正确更新状态
+          data.user = userInfo;
         }
       }
         
@@ -97,43 +100,35 @@ class AuthService {
     }
   }
 
-  // 刷新 token
+  // 刷新 Token
   async refreshToken(): Promise<AuthResponse> {
     try {
-      // RefreshToken 在 HttpOnly Cookie 中，后端会自动读取
-      const response = await api.post('/auth/refresh', {}, {
-        withCredentials: true
-      });
-        
-      const data = response.data;
-      if (data.success && data.accessToken) {
-        // 更新 AccessToken
-        secureStorage.saveTokens(data.accessToken);
+      const response = await api.post('/auth/refresh');
+      const { accessToken, user } = response.data;
+      if (accessToken) {
+        secureStorage.saveTokens(accessToken);
+        return { success: true, accessToken, user };
       }
-        
-      return data;
+      return { success: false, message: 'Refresh failed' };
     } catch (error: any) {
-      secureStorage.clearTokens();
-      secureStorage.clearUserInfo();
-      if (error.response?.data) {
-        return error.response.data;
-      }
-      return {
-        success: false,
-        message: '刷新 token 失败',
-        errorCode: 'REFRESH_FAILED'
-      };
+        secureStorage.clearTokens();
+        secureStorage.clearUserInfo();
+        return { 
+            success: false, 
+            message: error.response?.data?.message || 'Session expired' 
+        };
     }
   }
 
   // 检查是否已登录
   isAuthenticated(): boolean {
-    return secureStorage.isAuthenticated();
+    const token = secureStorage.getAccessToken();
+    return !!token;
   }
   
   // 获取当前用户信息
   getCurrentUser(): User | null {
-    return secureStorage.getCurrentUser();
+    return secureStorage.getUserInfo();
   }
   
   // 获取访问 token

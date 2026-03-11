@@ -1,9 +1,9 @@
 package com.demo.backend.config;
 
-import com.demo.backend.security.FilterChainDebugger;
-import com.demo.backend.security.JwtAccessDeniedHandler;
-import com.demo.backend.security.JwtAuthenticationEntryPoint;
 import com.demo.backend.security.JwtAuthenticationFilter;
+import com.demo.backend.security.JwtAuthenticationEntryPoint;
+import com.demo.backend.security.JwtAccessDeniedHandler;
+// import com.demo.backend.security.FilterChainDebugger; // Removed debugger import
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,7 +45,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-    private final FilterChainDebugger filterChainDebugger;
+    // private final FilterChainDebugger filterChainDebugger; // Removed debugger
 
     /**
      * 安全过滤器链配置
@@ -59,6 +59,9 @@ public class SecurityConfig {
             // 禁用CSRF（JWT无状态认证不需要）
             .csrf(AbstractHttpConfigurer::disable)
             
+            // 允许iframe加载（用于H2控制台）
+            .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
+            
             // 启用CORS
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             
@@ -69,9 +72,6 @@ public class SecurityConfig {
             
             // 配置认证提供者
             .authenticationProvider(authenticationProvider())
-            
-            // 添加过滤器链调试器（放在最前面，以便记录所有过滤器的执行）
-            .addFilterBefore(filterChainDebugger, UsernamePasswordAuthenticationFilter.class)
             
             // 添加JWT认证过滤器
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

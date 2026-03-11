@@ -3,7 +3,8 @@ package com.demo.backend.controllers;
 import com.demo.backend.services.AuthService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.HttpHeaders;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,7 +53,7 @@ public class AuthController {
      */
     @PostMapping("/login")
     @Operation(summary = "用户登录", description = "使用用户名和密码进行登录，返回访问令牌，刷新令牌存储在HttpOnly Cookie中")
-    public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequest loginRequest, HttpServletResponse response) {
+    public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequest loginRequest) {
         Map<String, Object> serviceResponse = authService.login(loginRequest);
         if (!(Boolean) serviceResponse.get("success")) {
             String errorCode = (String) serviceResponse.get("errorCode");
@@ -68,16 +69,20 @@ public class AuthController {
         // 设置HttpOnly Cookie存储refreshToken
         String refreshToken = (String) serviceResponse.get("refreshToken");
         if (refreshToken != null) {
-            Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
-            refreshTokenCookie.setHttpOnly(true);
-            refreshTokenCookie.setSecure(false); // 开发环境使用false，生产环境应改为true
-            refreshTokenCookie.setSameSite(Cookie.SameSite.STRICT);
-            refreshTokenCookie.setPath("/");
-            refreshTokenCookie.setMaxAge(7 * 24 * 60 * 60); // 7天过期
-            response.addCookie(refreshTokenCookie);
+            ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", refreshToken)
+                .httpOnly(true)
+                .secure(false) // 开发环境使用false，生产环境应改为true
+                .sameSite("Strict")
+                .path("/")
+                .maxAge(7 * 24 * 60 * 60) // 7天过期
+                .build();
             
             // 从响应中移除refreshToken，避免在响应体中返回
             serviceResponse.remove("refreshToken");
+            
+            return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, refreshTokenCookie.toString())
+                .body(serviceResponse);
         }
         
         return ResponseEntity.ok(serviceResponse);
@@ -88,16 +93,20 @@ public class AuthController {
      */
     @PostMapping("/logout")
     @Operation(summary = "用户登出", description = "登出当前会话，移除令牌和刷新令牌Cookie")
-    public ResponseEntity<Map<String, Object>> logout(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<Map<String, Object>> logout(HttpServletRequest request) {
         Map<String, Object> serviceResponse = authService.logout(request);
         
         // 清除refreshToken Cookie
-        clearRefreshTokenCookie(response);
+        ResponseCookie cleanCookie = clearRefreshTokenCookie();
         
         if (!(Boolean) serviceResponse.get("success")) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(serviceResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .header(HttpHeaders.SET_COOKIE, cleanCookie.toString())
+                .body(serviceResponse);
         }
-        return ResponseEntity.ok(serviceResponse);
+        return ResponseEntity.ok()
+            .header(HttpHeaders.SET_COOKIE, cleanCookie.toString())
+            .body(serviceResponse);
     }
 
     /**
@@ -105,7 +114,7 @@ public class AuthController {
      */
     @PostMapping("/refresh")
     @Operation(summary = "刷新令牌", description = "从HttpOnly Cookie中读取刷新令牌获取新的访问令牌")
-    public ResponseEntity<Map<String, Object>> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<Map<String, Object>> refreshToken(HttpServletRequest request) {
         // 从Cookie中获取refreshToken
         String refreshToken = null;
         Cookie[] cookies = request.getCookies();
@@ -135,8 +144,10 @@ public class AuthController {
             String errorCode = (String) serviceResponse.get("errorCode");
             if ("INVALID_REFRESH_TOKEN".equals(errorCode)) {
                 // 清除无效的refreshToken cookie
-                clearRefreshTokenCookie(response);
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(serviceResponse);
+                ResponseCookie cleanCookie = clearRefreshTokenCookie();
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .header(HttpHeaders.SET_COOKIE, cleanCookie.toString())
+                    .body(serviceResponse);
             } else {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(serviceResponse);
             }
@@ -145,16 +156,20 @@ public class AuthController {
         // 生成新的refreshToken并更新Cookie
         String newRefreshToken = (String) serviceResponse.get("refreshToken");
         if (newRefreshToken != null) {
-            Cookie refreshTokenCookie = new Cookie("refreshToken", newRefreshToken);
-            refreshTokenCookie.setHttpOnly(true);
-            refreshTokenCookie.setSecure(false); // 开发环境使用false，生产环境应改为true
-            refreshTokenCookie.setSameSite(Cookie.SameSite.STRICT);
-            refreshTokenCookie.setPath("/");
-            refreshTokenCookie.setMaxAge(7 * 24 * 60 * 60); // 7天过期
-            response.addCookie(refreshTokenCookie);
+            ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", newRefreshToken)
+                .httpOnly(true)
+                .secure(false) // 开发环境使用false，生产环境应改为true
+                .sameSite("Strict")
+                .path("/")
+                .maxAge(7 * 24 * 60 * 60) // 7天过期
+                .build();
             
             // 从响应中移除refreshToken，避免在响应体中返回
             serviceResponse.remove("refreshToken");
+            
+            return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, refreshTokenCookie.toString())
+                .body(serviceResponse);
         }
         
         return ResponseEntity.ok(serviceResponse);
@@ -193,14 +208,14 @@ public class AuthController {
     /**
      * 清除刷新令牌Cookie
      */
-    private void clearRefreshTokenCookie(HttpServletResponse response) {
-        Cookie refreshTokenCookie = new Cookie("refreshToken", "");
-        refreshTokenCookie.setHttpOnly(true);
-        refreshTokenCookie.setSecure(false);
-        refreshTokenCookie.setSameSite(Cookie.SameSite.STRICT);
-        refreshTokenCookie.setPath("/");
-        refreshTokenCookie.setMaxAge(0); // 设置为0立即过期
-        response.addCookie(refreshTokenCookie);
+    private ResponseCookie clearRefreshTokenCookie() {
+        return ResponseCookie.from("refreshToken", "")
+            .httpOnly(true)
+            .secure(false)
+            .sameSite("Strict")
+            .path("/")
+            .maxAge(0) // 设置为0立即过期
+            .build();
     }
 
     /**

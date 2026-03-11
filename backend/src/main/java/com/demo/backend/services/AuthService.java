@@ -17,6 +17,7 @@ import org.springframework.security.core.Authentication;  // 导入认证接口
 import org.springframework.security.core.AuthenticationException;  // 导入认证异常
 import org.springframework.security.core.context.SecurityContextHolder;  // 导入安全上下文持有者
 import org.springframework.security.core.userdetails.UserDetails;  // 导入用户详情接口
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;  // 导入密码编码器
 import org.springframework.stereotype.Service;  // 导入服务注解
 import org.springframework.transaction.annotation.Transactional;  // 导入事务注解
@@ -40,8 +41,8 @@ public class AuthService {  // 类定义
     private final SessionManagementService sessionManagementService;  // 会话管理服务字段
     private final UserRepository userRepository;  // 用户仓库字段
     private final RoleRepository roleRepository;  // 角色仓库字段
-    private final PasswordEncoder passwordEncoder;  // 密码编码器字段
-    private final UserDetailsService userDetailsService;  // 用户详情服务字段
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
 
     /**
      * 处理用户登录逻辑

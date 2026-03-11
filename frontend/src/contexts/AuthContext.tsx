@@ -29,13 +29,32 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 组件挂载时检查用户是否已登录
-    const initializeAuth = () => {
-      if (authService.isAuthenticated()) {
-        const currentUser = authService.getCurrentUser();
-        setUser(currentUser);
+    // 组件挂载时检查用户是否已登录，尝试从 HttpOnly Cookie 恢复会话
+    const initializeAuth = async () => {
+      try {
+        // 1. 先检查本地是否有 Token
+        if (authService.isAuthenticated()) {
+          const currentUser = authService.getCurrentUser();
+          setUser(currentUser);
+        } else {
+          // 2. 如果本地没有 Token，尝试调用 refresh 接口利用 HttpOnly Cookie 恢复
+          try {
+            const response = await authService.refreshToken();
+            if (response.success && response.accessToken) {
+               // refreshToken 成功后，authService 内部已经更新了 Token
+               const currentUser = authService.getCurrentUser();
+               setUser(currentUser);
+            }
+          } catch (e) {
+             // 恢复失败，无需操作，保持未登录状态
+             console.log('Session restore failed:', e);
+          }
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     initializeAuth();

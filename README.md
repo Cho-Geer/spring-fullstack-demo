@@ -13,6 +13,27 @@ A production-oriented full-stack demo application demonstrating secure authentic
   - **Cookie Attributes**: `secure` and `SameSite` vary by environment.
   - **Secrets**: JWT_SECRET managed via environment variables.
 
+## 🏗 Architecture Overview
+
+### Roles by Component
+
+- **Backend (Spring Boot)**: Issues JWT tokens, validates credentials, manages session state, enforces security policies, handles token blacklist in Redis.
+- **Frontend (React)**: Manages UI state, stores access token in sessionStorage, triggers refresh on 401 errors, handles login/logout UI flow.
+- **Redis**: Stores token blacklist for immediate session revocation, acts as session state store for active sessions.
+
+### Token Responsibilities
+
+- **Access Token**: Short-lived (1 hour), used for API authorization, stored in sessionStorage to prevent XSS access.
+- **Refresh Token**: Long-lived (7 days), used to obtain new access tokens, stored in HttpOnly Cookie to prevent XSS theft.
+
+### Why sessionStorage?
+
+We chose `sessionStorage` over `localStorage` because it is **tab-specific** and **cleared when the tab closes**. This provides better security isolation between sessions and reduces the risk of token reuse across different browsing contexts. It also automatically handles the "logout on browser close" behavior that many applications expect.
+
+### Why Blacklist?
+
+JWTs are stateless by design, but we still need the ability to **immediately revoke sessions** (e.g., user clicks logout, admin terminates a session, security breach detected). A Redis-backed blacklist allows O(1) lookup during token validation, providing the best of both worlds: mostly stateless JWTs with instant revocation capability when needed.
+
 ## 🛠 Tech Stack
 
 - **Backend**: Spring Boot 3.x, Spring Security 6, JPA, Redis, MySQL/H2

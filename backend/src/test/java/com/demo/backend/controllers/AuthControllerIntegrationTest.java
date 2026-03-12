@@ -27,11 +27,32 @@ class AuthControllerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private com.demo.backend.repositories.UserRepository userRepository;
+
     @Test
     void login_success() throws Exception {
-        Map<String, String> loginRequest = Map.of("username", "testuser", "password", "password");
+        // 先检查用户是否存在，如果存在则删除
+        userRepository.findByUsername("testuser").ifPresent(userRepository::delete);
+        userRepository.findByEmail("test@example.com").ifPresent(userRepository::delete);
+        
+        // 先注册用户
+        Map<String, String> registerRequest = Map.of(
+                "username", "testuser",
+                "email", "test@example.com",
+                "password", "Password123!"
+        );
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
+        mockMvc.perform(MockMvcRequestBuilders.post("/auth/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(registerRequest)))
+                .andDo(result -> System.out.println("Register response: " + result.getResponse().getContentAsString()));
+
+
+        // 然后登录
+        Map<String, String> loginRequest = Map.of("username", "testuser", "password", "Password123!");
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andDo(result -> System.out.println(result.getResponse().getContentAsString()))
@@ -43,7 +64,7 @@ class AuthControllerIntegrationTest {
     void login_failure_invalidCredentials() throws Exception {
         Map<String, String> loginRequest = Map.of("username", "testuser", "password", "wrongpassword");
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
+        mockMvc.perform(MockMvcRequestBuilders.post("/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequest)))
                 .andExpect(status().isUnauthorized());
@@ -52,7 +73,7 @@ class AuthControllerIntegrationTest {
     // 可以添加更多测试，如需要认证的端点
     @Test
     void protectedEndpoint_withoutToken() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/users"))
                 .andExpect(status().isUnauthorized());
     }
 }

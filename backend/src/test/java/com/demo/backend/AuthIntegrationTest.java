@@ -1,25 +1,18 @@
 package com.demo.backend;
 
 import com.demo.backend.repositories.UserRepository;
+import com.demo.backend.services.SessionManagementService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.cookie;
@@ -39,27 +32,13 @@ class AuthIntegrationTest {
     private UserRepository userRepository;
     
     @MockBean
-    private RedisTemplate<String, String> redisTemplate;
-
-    @BeforeEach
-    void setupRedisMock() {
-        ValueOperations<String, String> valueOperations = mock(ValueOperations.class);
-        ZSetOperations<String, String> zSetOperations = mock(ZSetOperations.class);
-        
-        // 模拟 opsForValue
-        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
-        
-        // 模拟 opsForZSet
-        when(redisTemplate.opsForZSet()).thenReturn(zSetOperations);
-        
-        // 模拟 SessionManagementService.registerUserToken 中的调用
-        when(zSetOperations.range(anyString(), anyLong(), anyLong())).thenReturn(new HashSet<>());
-        when(zSetOperations.add(anyString(), anyString(), anyDouble())).thenReturn(true);
-        doAnswer(invocation -> null).when(valueOperations).set(anyString(), anyString(), anyLong(), any());
-    }
+    private SessionManagementService sessionManagementService;
 
     @Test
     void testRegisterAndLoginFlow() throws Exception {
+        // 模拟SessionManagementService的方法，让登录成功
+        when(sessionManagementService.registerUserToken(anyString(), anyString(), anyLong())).thenReturn(true);
+        when(sessionManagementService.isTokenInBlacklist(anyString())).thenReturn(false);
         // 0. Cleanup (防止脏数据)
         if (userRepository.existsByUsername("testuser")) {
             userRepository.delete(userRepository.findByUsername("testuser").get());
@@ -99,7 +78,7 @@ class AuthIntegrationTest {
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.accessToken").exists())
                 // H2/Test环境也应该模拟Cookie行为
-                .andExpect(cookie().exists("refresh_token"))
-                .andExpect(cookie().httpOnly("refresh_token", true));
+                .andExpect(cookie().exists("refreshToken"))
+                .andExpect(cookie().httpOnly("refreshToken", true));
     }
 }

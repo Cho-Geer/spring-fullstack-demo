@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Map;
 
@@ -34,6 +35,9 @@ class AuthServiceTest {
 
     @Mock
     private SessionManagementService sessionManagementService;
+
+    @Mock
+    private UserDetailsService userDetailsService;
 
     @InjectMocks
     private AuthService authService;
@@ -108,7 +112,9 @@ class AuthServiceTest {
 
         when(jwtUtils.validateRefreshToken("validRefreshToken")).thenReturn(true);
         when(jwtUtils.extractUsername("validRefreshToken")).thenReturn("testuser");
-        when(jwtUtils.generateTokenFromUsername("testuser")).thenReturn("newAccessToken");
+        when(userDetailsService.loadUserByUsername("testuser")).thenReturn(userDetails);
+        when(jwtUtils.generateToken(userDetails)).thenReturn("newAccessToken");
+        when(jwtUtils.generateRefreshToken(userDetails)).thenReturn("newRefreshToken");
         when(jwtUtils.getExpirationTime()).thenReturn(3600000L);
 
         // 假设当前没有oldToken

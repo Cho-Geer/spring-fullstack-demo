@@ -75,8 +75,13 @@ A robust full-stack application demonstrating secure authentication flows, inclu
 3. **Refresh**: When access token expires (401), client calls `/refresh`. Server validates cookie, rotates tokens, and returns new pair.
 4. **Logout**: Client calls `/logout`. Server invalidates cookie and blacklists access token in Redis.
 
+### Cookie Security by Environment
+- **Development**: `secure=false`, `SameSite=Lax` (allows HTTP for localhost)
+- **Test**: `secure=false`, `SameSite=Strict` (stricter CSRF protection)
+- **Production**: `secure=true`, `SameSite=Strict` (HTTPS required, maximum protection)
+
 ### Trade-offs & Limitations
-- **CSRF**: Currently disabled. While HttpOnly cookies are used for refresh tokens, the refresh endpoint is POST and technically vulnerable to CSRF if not properly protected (e.g., via SameSite=Strict). Future updates will enforce CSRF tokens for cookie-based endpoints.
+- **CSRF**: Currently disabled but mitigated by SameSite=Strict in production. Future enhancements will include CSRF tokens for cookie-based endpoints with SameSite=Lax fallback for specific use cases.
 - **Statelessness**: While JWTs are stateless, the revocation list (blacklist) requires Redis state.
 
 ## 🧪 Testing

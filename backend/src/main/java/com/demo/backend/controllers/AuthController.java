@@ -1,5 +1,6 @@
 package com.demo.backend.controllers;
 
+import com.demo.backend.config.CookieConfig;
 import com.demo.backend.services.AuthService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class AuthController {
 
     private final AuthService authService;
+    private final CookieConfig cookieConfig;
 
     /**
      * 用户注册
@@ -71,8 +73,8 @@ public class AuthController {
         if (refreshToken != null) {
             ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", refreshToken)
                 .httpOnly(true)
-                .secure(false) // 开发环境使用false，生产环境应改为true
-                .sameSite("Strict")
+                .secure(cookieConfig.isSecure())
+                .sameSite(cookieConfig.getSameSite())
                 .path("/")
                 .maxAge(7 * 24 * 60 * 60) // 7天过期
                 .build();
@@ -158,8 +160,8 @@ public class AuthController {
         if (newRefreshToken != null) {
             ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", newRefreshToken)
                 .httpOnly(true)
-                .secure(false) // 开发环境使用false，生产环境应改为true
-                .sameSite("Strict")
+                .secure(cookieConfig.isSecure())
+                .sameSite(cookieConfig.getSameSite())
                 .path("/")
                 .maxAge(7 * 24 * 60 * 60) // 7天过期
                 .build();
@@ -211,8 +213,8 @@ public class AuthController {
     private ResponseCookie clearRefreshTokenCookie() {
         return ResponseCookie.from("refreshToken", "")
             .httpOnly(true)
-            .secure(false)
-            .sameSite("Strict")
+            .secure(cookieConfig.isSecure())
+            .sameSite(cookieConfig.getSameSite())
             .path("/")
             .maxAge(0) // 设置为0立即过期
             .build();

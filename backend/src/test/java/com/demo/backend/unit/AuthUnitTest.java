@@ -1,5 +1,6 @@
 package com.demo.backend.unit;
 
+import com.demo.backend.config.CookieConfig;
 import com.demo.backend.controllers.AuthController;
 import com.demo.backend.controllers.AuthController.LoginRequest;
 import com.demo.backend.controllers.AuthController.RefreshTokenRequest;
@@ -57,12 +58,17 @@ class AuthUnitTest {
     @Mock
     private PasswordEncoder passwordEncoder;
 
+    @Mock
+    private CookieConfig cookieConfig;
+
     @InjectMocks
     private AuthController authController;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        when(cookieConfig.isSecure()).thenReturn(false);
+        when(cookieConfig.getSameSite()).thenReturn("Lax");
     }
 
     /**

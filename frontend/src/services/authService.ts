@@ -1,6 +1,7 @@
-import api from './api';
+import api, { refreshToken, RefreshResponse } from './api';
 import secureStorage from '../utils/secureStorage';
 import tokenUtils from '../utils/tokenUtils';
+import authErrorHandler from '../utils/authErrorHandler';
 
 export interface RegisterRequest {
   username: string;
@@ -109,24 +110,22 @@ class AuthService {
 
   async refreshToken(): Promise<AuthResponse> {
     try {
-      const response = await api.post('/auth/refresh');
-      const { accessToken } = response.data;
+      const data: RefreshResponse = await refreshToken();
       
-      if (accessToken) {
-        secureStorage.saveTokens(accessToken);
+      if (data.accessToken) {
+        secureStorage.saveTokens(data.accessToken);
         
-        const userInfo = this.normalizeUser(response.data.user, accessToken);
+        const userInfo = this.normalizeUser(data.user as User | undefined, data.accessToken);
         
         if (userInfo) {
           secureStorage.saveUserInfo(userInfo);
         }
         
-        return { success: true, accessToken, user: userInfo };
+        return { success: true, accessToken: data.accessToken, user: userInfo };
       }
       return { success: false, message: 'Refresh failed' };
     } catch (error: any) {
-      secureStorage.clearTokens();
-      secureStorage.clearUserInfo();
+      authErrorHandler.handleAuthError(true);
       return { 
         success: false, 
         message: error.response?.data?.message || 'Session expired' 

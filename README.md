@@ -1,24 +1,23 @@
 # Spring Boot + React Fullstack Demo
 
-A robust full-stack application demonstrating secure authentication flows, including HttpOnly Cookie-based refresh tokens, token rotation, and strict security configurations suitable for production environments.
+A production-oriented full-stack demo application demonstrating secure authentication patterns with HttpOnly Cookie-based refresh tokens, session management, and configurable security settings.
 
 ## 🚀 Key Features
 
 - **Secure Authentication**:
-  - **HttpOnly Cookie**: Refresh tokens are stored in HttpOnly cookies to prevent XSS attacks.
-  - **Token Rotation**: Refresh tokens are rotated on every use to detect token theft.
-  - **Session Management**: Access tokens are stored in `sessionStorage` (tab-specific).
-  - **Blacklisting**: Active tokens are blacklisted on logout using Redis.
-- **Strict Security**:
-  - **CORS**: Configurable strict CORS policies (no wildcards in production).
-  - **Secrets Management**: Sensitive data managed via environment variables.
-  - **CSRF**: Disabled for stateless JWT flow (future enhancements planned for cookie endpoints).
+  - **HttpOnly Cookie**: Refresh tokens stored in HttpOnly cookies to prevent XSS attacks.
+  - **Session Management**: Access tokens stored in `sessionStorage` (tab-specific).
+  - **Blacklisting**: Active tokens blacklisted on logout using Redis.
+- **Environment-Based Security**:
+  - **CORS**: Configurable per environment (dev/test/prod profiles).
+  - **Cookie Attributes**: `secure` and `SameSite` vary by environment.
+  - **Secrets**: JWT_SECRET managed via environment variables.
 
 ## 🛠 Tech Stack
 
 - **Backend**: Spring Boot 3.x, Spring Security 6, JPA, Redis, MySQL/H2
 - **Frontend**: React 18, TypeScript, Axios, Context API
-- **Testing**: JUnit 5, MockMvc, TestContainers (integration tests)
+- **Testing**: JUnit 5, MockMvc, TestContainers-ready
 
 ## 🏃‍♂️ Getting Started
 
@@ -41,8 +40,8 @@ A robust full-stack application demonstrating secure authentication flows, inclu
    - `CORS_ALLOWED_ORIGINS`: Frontend application origin(s)
    
    **Optional Environment Variables**:
-   - `JWT_EXPIRATION`: Access token expiration time in milliseconds (default: 3600000)
-   - `JWT_REFRESH_EXPIRATION`: Refresh token expiration time in milliseconds (default: 86400000)
+   - `JWT_EXPIRATION`: Access token expiration in milliseconds (default: 3600000)
+   - `JWT_REFRESH_EXPIRATION`: Refresh token expiration in milliseconds (default: 86400000)
 
 2. **Run with Maven**:
    ```bash
@@ -72,17 +71,34 @@ A robust full-stack application demonstrating secure authentication flows, inclu
    - `accessToken` (JSON body) -> Stored in `sessionStorage`.
    - `refreshToken` (HttpOnly Cookie) -> Automatically handled by browser.
 2. **Access**: Client sends `Authorization: Bearer <token>` header.
-3. **Refresh**: When access token expires (401), client calls `/refresh`. Server validates cookie, rotates tokens, and returns new pair.
+3. **Refresh**: When access token expires (401), client calls `/refresh`. Server validates cookie and returns new access token.
 4. **Logout**: Client calls `/logout`. Server invalidates cookie and blacklists access token in Redis.
 
 ### Cookie Security by Environment
 - **Development**: `secure=false`, `SameSite=Lax` (allows HTTP for localhost)
 - **Test**: `secure=false`, `SameSite=Strict` (stricter CSRF protection)
-- **Production**: `secure=true`, `SameSite=Strict` (HTTPS required, maximum protection)
+- **Production**: `secure=true`, `SameSite=Strict` (HTTPS required)
+
+### Current Status
+
+#### Implemented
+- HttpOnly Cookie for refresh tokens
+- Access token in sessionStorage
+- Redis-based token blacklist on logout
+- Environment-specific cookie attributes (secure/SameSite)
+- CORS configuration via environment variables
+- JWT_SECRET required via environment variable
+
+#### Planned Improvements
+- Token rotation on every refresh (currently: refresh token valid for 7 days)
+- CSRF token integration for additional protection
+- Rate limiting on auth endpoints
 
 ### Trade-offs & Limitations
-- **CSRF**: Currently disabled but mitigated by SameSite=Strict in production. Future enhancements will include CSRF tokens for cookie-based endpoints with SameSite=Lax fallback for specific use cases.
-- **Statelessness**: While JWTs are stateless, the revocation list (blacklist) requires Redis state.
+- **CSRF**: Disabled for stateless JWT flow. Mitigated by SameSite=Strict in production. Consider adding CSRF tokens for higher security requirements.
+- **Token Rotation**: Currently refresh tokens are valid for 7 days. Adding rotation on each use provides theft detection but increases complexity.
+- **Statelessness**: JWTs are stateless, but token revocation requires Redis state.
+- **Session Binding**: Refresh tokens are bound to the original device/session.
 
 ## 🧪 Testing
 

@@ -1,4 +1,5 @@
-// 仅负责存储，Token 解析逻辑移至 tokenUtils.ts
+import { User } from '../services/authService';
+
 const secureStorage = {
   saveTokens: (accessToken: string) => {
     sessionStorage.setItem('accessToken', accessToken);
@@ -12,13 +13,18 @@ const secureStorage = {
     sessionStorage.removeItem('accessToken');
   },
   
-  saveUserInfo: (user: any) => {
+  saveUserInfo: (user: User) => {
     sessionStorage.setItem('user', JSON.stringify(user));
   },
   
-  getUserInfo: () => {
+  getUserInfo: (): User | null => {
     const userStr = sessionStorage.getItem('user');
-    return userStr ? JSON.parse(userStr) : null;
+    if (!userStr) return null;
+    try {
+      return JSON.parse(userStr) as User;
+    } catch {
+      return null;
+    }
   },
   
   clearUserInfo: () => {

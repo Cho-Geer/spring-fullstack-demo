@@ -7,6 +7,11 @@ interface DecodedToken {
   roles: string[];
 }
 
+export interface TokenUser {
+  username: string;
+  roles: string[];
+}
+
 const tokenUtils = {
   decodeToken: (token: string): DecodedToken | null => {
     try {
@@ -24,13 +29,13 @@ const tokenUtils = {
     return decoded.exp < currentTime;
   },
   
-  getUserFromToken: (token: string) => {
-      const decoded = tokenUtils.decodeToken(token);
-      if (!decoded) return null;
-      return {
-          username: decoded.sub,
-          roles: decoded.roles
-      };
+  getUserFromToken: (token: string): TokenUser | null => {
+    const decoded = tokenUtils.decodeToken(token);
+    if (!decoded) return null;
+    return {
+      username: decoded.sub,
+      roles: decoded.roles || []
+    };
   }
 };
 

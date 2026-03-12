@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import authService, { User } from '../services/authService';
+import tokenUtils from '../utils/tokenUtils';
+import secureStorage from '../utils/secureStorage';
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  isRestoring: boolean;
   login: (username: string, password: string) => Promise<{ success: boolean; message: string }>;
   register: (username: string, email: string, password: string) => Promise<{ success: boolean; message: string }>;
   logout: () => Promise<void>;
@@ -27,31 +30,52 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRestoring, setIsRestoring] = useState(false);
 
   useEffect(() => {
-    // 组件挂载时检查用户是否已登录，尝试从 HttpOnly Cookie 恢复会话
     const initializeAuth = async () => {
       try {
-        // 1. 先检查本地是否有 Token
-        if (authService.isAuthenticated()) {
-          const currentUser = authService.getCurrentUser();
-          setUser(currentUser);
+        const localToken = secureStorage.getAccessToken();
+        
+        if (localToken) {
+          if (tokenUtils.isTokenExpired(localToken)) {
+            console.log('Local token expired, attempting to restore via refresh...');
+            const refreshResponse = await authService.refreshToken();
+            if (refreshResponse.success && refreshResponse.accessToken) {
+              const currentUser = authService.getCurrentUser();
+              setUser(currentUser);
+            } else {
+              console.log('Refresh failed, clearing auth state');
+              secureStorage.clearTokens();
+              secureStorage.clearUserInfo();
+              setUser(null);
+            }
+          } else {
+            const currentUser = authService.getCurrentUser();
+            setUser(currentUser);
+          }
         } else {
-          // 2. 如果本地没有 Token，尝试调用 refresh 接口利用 HttpOnly Cookie 恢复
+          setIsRestoring(true);
           try {
             const response = await authService.refreshToken();
             if (response.success && response.accessToken) {
-               // refreshToken 成功后，authService 内部已经更新了 Token
-               const currentUser = authService.getCurrentUser();
-               setUser(currentUser);
+              const currentUser = authService.getCurrentUser();
+              setUser(currentUser);
             }
           } catch (e) {
-             // 恢复失败，无需操作，保持未登录状态
-             console.log('Session restore failed:', e);
+            console.log('Session restore failed:', e);
+            secureStorage.clearTokens();
+            secureStorage.clearUserInfo();
+            setUser(null);
+          } finally {
+            setIsRestoring(false);
           }
         }
       } catch (error) {
         console.error('Auth initialization error:', error);
+        secureStorage.clearTokens();
+        secureStorage.clearUserInfo();
+        setUser(null);
       } finally {
         setIsLoading(false);
       }
@@ -112,8 +136,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const value: AuthContextType = {
     user,
-    isAuthenticated: !!user,
+    isAuthenticated: !!user && !isRestoring,
     isLoading,
+    isRestoring,
     login,
     register,
     logout,

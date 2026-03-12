@@ -30,11 +30,19 @@ A robust full-stack application demonstrating secure authentication flows, inclu
 ### Backend Setup
 
 1. **Configure Environment**:
-   Copy the example environment file or set variables directly.
+   Set the required environment variables. JWT_SECRET is mandatory and must be at least 32 bytes long.
    ```bash
    export JWT_SECRET=your_secure_random_secret_key_at_least_32_bytes
    export CORS_ALLOWED_ORIGINS=http://localhost:3000
    ```
+   
+   **Required Environment Variables**:
+   - `JWT_SECRET`: Secure random secret key (at least 32 bytes)
+   - `CORS_ALLOWED_ORIGINS`: Frontend application origin(s)
+   
+   **Optional Environment Variables**:
+   - `JWT_EXPIRATION`: Access token expiration time in milliseconds (default: 3600000)
+   - `JWT_REFRESH_EXPIRATION`: Refresh token expiration time in milliseconds (default: 86400000)
 
 2. **Run with Maven**:
    ```bash

@@ -23,7 +23,7 @@ import java.util.function.Function;
 public class JwtUtils {
 
     // JWT密钥，从配置文件读取
-    @Value("${jwt.secret:MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWYwMTIzNDU2Nzg5YWJjZGVmMDEyMzQ1Njc4OWFiY2RlZg==}")
+    @Value("${jwt.secret}")
     private String secret;
 
     // JWT过期时间（毫秒），默认24小时

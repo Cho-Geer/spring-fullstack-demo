@@ -1,11 +1,13 @@
 package com.demo.backend.controllers;
 
 import com.demo.backend.BackendApplication;
+import com.demo.backend.services.SessionManagementService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -14,6 +16,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Map;
 
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = BackendApplication.class)
@@ -29,9 +33,16 @@ class AuthControllerIntegrationTest {
 
     @Autowired
     private com.demo.backend.repositories.UserRepository userRepository;
+    
+    @MockBean
+    private SessionManagementService sessionManagementService;
 
     @Test
     void login_success() throws Exception {
+        // 模拟SessionManagementService的方法，让登录成功
+        when(sessionManagementService.registerUserToken(anyString(), anyString(), anyLong())).thenReturn(true);
+        when(sessionManagementService.isTokenInBlacklist(anyString())).thenReturn(false);
+        
         // 先检查用户是否存在，如果存在则删除
         userRepository.findByUsername("testuser").ifPresent(userRepository::delete);
         userRepository.findByEmail("test@example.com").ifPresent(userRepository::delete);

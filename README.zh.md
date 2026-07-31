@@ -1,1 +1,140 @@
-IyBTcHJpbmcgQm9vdCArIFJlYWN0IOWFqOagiOa8lOekuumhueebrgoK5LiA5LiqKirpnaLlkJHnlJ/kuqfnjq/looMqKueahOWFqOagiOa8lOekuuW6lOeUqCzlsZXnpLrkuobln7rkuo4gSHR0cE9ubHkgQ29va2llIOeahCBSZWZyZXNoIFRva2VuIOWuieWFqOiupOivgeaooeW8j+OAgeS8muivneeuoeeQhuS7peWPiuWPr+mFjee9rueahOWuieWFqOiuvue9ruOAggoKIyMg8J+agCDmoLjlv4PnibnmgKcKCi0gKirlronlhajorqTor4EqKjoKICAtICoqSHR0cE9ubHkgQ29va2llKio6UmVmcmVzaCBUb2tlbiDlrZjlgqjlnKggSHR0cE9ubHkgQ29va2llIOS4rSzku6XpmLLmraIgWFNTIOaUu+WHu+OAggogIC0gKirkvJror53nrqHnkIYqKjpBY2Nlc3MgVG9rZW4g5a2Y5YKo5ZyoIGBzZXNzaW9uU3RvcmFnZWAg5LitKOaMiSBUYWIg6ZqU56a7KeOAggogIC0gKirpu5HlkI3ljZXmnLrliLYqKjrnmbvlh7rml7bkvb/nlKggUmVkaXMg5bCG5rS76LeDIFRva2VuIOWKoOWFpem7keWQjeWNleOAggotICoq5Z+65LqO546v5aKD55qE5a6J5YWo6YWN572uKio6CiAgLSAqKkNPUlMqKjrlj6/mjInnjq/looMoZGV2IC8gdGVzdCAvIHByb2QgcHJvZmlsZSnov5vooYzphY3nva7jgIIKICAtICoqQ29va2llIOWxnuaApyoqOmBzZWN1cmVgIOWSjCBgU2FtZVNpdGVgIOmaj+eOr+Wig+S4jeWQjOiAjOWPmOWMluOAggogIC0gKirlr4bpkqXnrqHnkIYqKjpgSldUX1NFQ1JFVGAg6YCa6L+H546v5aKD5Y+Y6YeP566h55CG44CCCgojIyDwn4+XIOaetuaehOamguiniAoKIyMjIOWQhOe7hOS7tueahOiBjOi0owoKLSAqKuWQjuerryhTcHJpbmcgQm9vdCkqKjrnrb7lj5EgSldUIFRva2Vu44CB5qCh6aqM5Yet6K+B44CB566h55CG5Lya6K+d54q25oCB44CB5omn6KGM5a6J5YWo562W55WlLOW5tuWcqCBSZWRpcyDkuK3lpITnkIYgVG9rZW4g6buR5ZCN5Y2V44CCCi0gKirliY3nq68oUmVhY3QpKio6566h55CGIFVJIOeKtuaAgSzlsIYgQWNjZXNzIFRva2VuIOWtmOWCqOWcqCBzZXNzaW9uU3RvcmFnZSDkuK0s5Zyo6YGH5YiwIDQwMSDml7bop6blj5HliLfmlrAs5bm25aSE55CG55m75b2VL+eZu+WHuueahCBVSSDmtYHnqIvjgIIKLSAqKlJlZGlzKio65a2Y5YKo55So5LqO5Y2z5pe25ZCK6ZSA55qEIFRva2VuIOm7keWQjeWNlSzlkIzml7bkvZzkuLrmtLvot4PkvJror53nmoTkvJror53nirbmgIHlrZjlgqjjgIIKCiMjIyBUb2tlbiDogYzotKPliJLliIYKCi0gKipBY2Nlc3MgVG9rZW4qKjrnn63mnJ/mnInmlYgoMSDlsI/ml7YpLOeUqOS6jiBBUEkg6Ym05p2DLOWtmOWCqOWcqCBzZXNzaW9uU3RvcmFnZSDkuK3ku6Xpgb/lhY3ooqsgWFNTIOiuv+mXruOAggotICoqUmVmcmVzaCBUb2tlbioqOumVv+acn+acieaViCg3IOWkqSks55So5LqO6I635Y+W5paw55qEIEFjY2VzcyBUb2tlbizlrZjlgqjlnKggSHR0cE9ubHkgQ29va2llIOS4reS7pemBv+WFjeiiqyBYU1Mg56qD5Y+W44CCCgojIyMg5Li65LuA5LmI6YCJ5oupIHNlc3Npb25TdG9yYWdlPwoK5oiR5Lus5rKh5pyJ6YCJ5oupIGBsb2NhbFN0b3JhZ2VgLOiAjOaYr+mAieaLqSBgc2Vzc2lvblN0b3JhZ2VgLOaYr+WboOS4uuWugyoq5oyJIFRhYiDpmpTnprsqKuW5tuS4lCoq5ZyoIFRhYiDlhbPpl63ml7booqvmuIXpmaQqKuOAgui/meWPr+S7peaPkOS+m+abtOWlveeahOS8muivnemXtOWuieWFqOmalOemuyzpmY3kvY4gVG9rZW4g5Zyo5LiN5ZCM5rWP6KeI5LiK5LiL5paH5LmL6Ze06KKr5aSN55So55qE6aOO6Zmp44CC5ZCM5pe2LOWug+i/mOiDveiHquWKqOWunueOsOiuuOWkmuW6lOeUqOaJgOacn+acm+eahCLlhbPpl63mtY/op4jlmajljbPnmbvlh7oi55qE6KGM5Li644CCCgojIyMg5Li65LuA5LmI6ZyA6KaB6buR5ZCN5Y2VPwoKSldUIOacrOi6q+aYr+aXoOeKtuaAgeeahCzkvYbmiJHku6zku43nhLbpnIDopoEqKuWNs+aXtuWQiumUgOS8muivnSoq55qE6IO95YqbKOS+i+WmgjrnlKjmiLfngrnlh7vnmbvlh7rjgIHnrqHnkIblkZjlvLrliLbnu5PmnZ/kvJror53jgIHmo4DmtYvliLDlronlhajkuovku7bnrYkp44CC5Z+65LqOIFJlZGlzIOeahOm7keWQjeWNleWPr+S7peWcqCBUb2tlbiDmoKHpqozml7bmj5DkvpsgTygxKSDmn6Xmib4s6K6p5oiR5Lus5ZyoIuS7peaXoOeKtuaAgeS4uuS4uyLlkowi5b+F6KaB5pe25Y2z5pe25ZCK6ZSAIuS5i+mXtOWFvOW+l+OAggoKIyMg8J+boCDmioDmnK/moIgKCi0gKirlkI7nq68qKjpTcHJpbmcgQm9vdCAzLnjjgIFTcHJpbmcgU2VjdXJpdHkgNuOAgUpQQeOAgVJlZGlz44CBTXlTUUwvSDIKLSAqKuWJjeerryoqOlJlYWN0IDE444CBVHlwZVNjcmlwdOOAgUF4aW9z44CBQ29udGV4dCBBUEkKLSAqKua1i+ivlSoqOkpVbml0IDXjgIFNb2NrTXZj44CBVGVzdENvbnRhaW5lcnMg5bCx57uqCgojIyDwn4+D4oCN4pmC77iPIOW/q+mAn+W8gOWniwoKIyMjIOeOr+Wig+imgeaxggotIEphdmEgMTcg5Y+K5Lul5LiKCi0gTm9kZS5qcyAxOCDlj4rku6XkuIoKLSBEb2NrZXIo5Y+v6YCJLOeUqOS6jiBSZWRpcy9NeVNRTCkKCiMjIyDlkI7nq6/orr7nva4KCjEuICoq6YWN572u546v5aKD5Y+Y6YePKio6CiAgIOiuvue9ruaJgOmcgOeahOeOr+Wig+WPmOmHj+OAgmBKV1RfU0VDUkVUYCDmmK/lv4Xloavpobks6ZW/5bqm6Iez5bCR6ZyA6KaBIDMyIOWtl+iKguOAggogICBgYGBiYXNoCiAgIGV4cG9ydCBKV1RfU0VDUkVUPXlvdXJfc2VjdXJlX3JhbmRvbV9zZWNyZXRfa2V5X2F0X2xlYXN0XzMyX2J5dGVzCiAgIGV4cG9ydCBDT1JTX0FMTE9XRURfT1JJR0lOUz1odHRwOi8vbG9jYWxob3N0OjMwMDAKICAgYGBgCiAgIAogICAqKuW/heWhq+eOr+Wig+WPmOmHjyoqOgogICAtIGBKV1RfU0VDUkVUYDrlronlhajnmoTpmo/mnLrlr4bpkqUo6Iez5bCRIDMyIOWtl+iKgikKICAgLSBgQ09SU19BTExPV0VEX09SSUdJTlNgOuWJjeerr+W6lOeUqOeahOadpea6kAogICAKICAgKirlj6/pgInnjq/looPlj5jph48qKjoKICAgLSBgSldUX0VYUElSQVRJT05gOkFjY2VzcyBUb2tlbiDov4fmnJ/ml7bpl7Qo5q+r56eSLOm7mOiupDozNjAwMDAwKQogICAtIGBKV1RfUkVGUkVTSF9FWFBJUkFUSU9OYDpSZWZyZXNoIFRva2VuIOi/h+acn+aXtumXtCjmr6vnp5Is6buY6K6kOjg2NDAwMDAwKQoKMi4gKirkvb/nlKggTWF2ZW4g6L+Q6KGMKio6CiAgIGBgYGJhc2gKICAgY2QgYmFja2VuZAogICAuL212bncgc3ByaW5nLWJvb3Q6cnVuCiAgIGBgYAoKIyMjIOWJjeerr+iuvue9rgoKMS4gKirphY3nva7njq/looPlj5jph48qKjoKICAg5ZyoIGBmcm9udGVuZGAg55uu5b2V5LiL5Yib5bu65LiA5LiqIGAuZW52YCDmlofku7Y6CiAgIGBgYGVudgogICBSRUFDVF9BUFBfQVBJX0JBU0VfVVJMPWh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkKICAgYGBgCgoyLiAqKuWuieijheS4jui/kOihjCoqOgogICBgYGBiYXNoCiAgIGNkIGZyb250ZW5kCiAgIG5wbSBpbnN0YWxsCiAgIG5wbSBzdGFydAogICBgYGAKCiMjIPCflJIg5a6J5YWo5a6e546w57uG6IqCCgojIyMg6K6k6K+B5rWB56iLCjEuICoq55m75b2VKio65a6i5oi356uv5o+Q5Lqk5Yet6K+B44CC5pyN5Yqh56uv5qCh6aqM5oiQ5Yqf5ZCO6L+U5ZueOgogICAtIGBhY2Nlc3NUb2tlbmAo5pS+5ZyoIEpTT04gQm9keSDkuK0p4oaSIOWtmOWCqOWcqCBgc2Vzc2lvblN0b3JhZ2Vg44CCCiAgIC0gYHJlZnJlc2hUb2tlbmAoSHR0cE9ubHkgQ29va2llKeKGkiDnlLHmtY/op4jlmajoh6rliqjlpITnkIbjgIIKMi4gKirorr/pl67mjqXlj6MqKjrlrqLmiLfnq6/lnKjor7fmsYLlpLTmkLrluKYgYEF1dGhvcml6YXRpb246IEJlYXJlciA8dG9rZW4+YOOAggozLiAqKuWIt+aWsCoqOuW9kyBBY2Nlc3MgVG9rZW4g6L+H5pyfKOaUtuWIsCA0MDEp5pe2LOWuouaIt+err+iwg+eUqCBgL3JlZnJlc2hgLOacjeWKoeerr+agoemqjCBDb29raWUg5ZCO6L+U5Zue5paw55qEIEFjY2VzcyBUb2tlbuOAggo0LiAqKueZu+WHuioqOuWuouaIt+err+iwg+eUqCBgL2xvZ291dGAs5pyN5Yqh56uv5riF6ZmkIENvb2tpZSDlubblsIYgQWNjZXNzIFRva2VuIOWKoOWFpSBSZWRpcyDpu5HlkI3ljZXjgIIKCiMjIyDmjInnjq/looPljLrliIbnmoQgQ29va2llIOWuieWFqOetlueVpQotICoqRGV2ZWxvcG1lbnQqKjpgc2VjdXJlPWZhbHNlYOOAgWBTYW1lU2l0ZT1MYXhgKOWFgeiuuCBsb2NhbGhvc3Qg5L2/55SoIEhUVFApCi0gKipUZXN0Kio6YHNlY3VyZT1mYWxzZWDjgIFgU2FtZVNpdGU9U3RyaWN0YCjmm7TkuKXmoLznmoQgQ1NSRiDpmLLmiqQpCi0gKipQcm9kdWN0aW9uKio6YHNlY3VyZT10cnVlYOOAgWBTYW1lU2l0ZT1TdHJpY3RgKOW8uuWItiBIVFRQUykKCiMjIyDlvZPliY3nirbmgIEKCiMjIyMg5bey5a6e546wCi0g55So5LqOIFJlZnJlc2ggVG9rZW4g55qEIEh0dHBPbmx5IENvb2tpZQotIOWtmOWCqOWcqCBzZXNzaW9uU3RvcmFnZSDkuK3nmoQgQWNjZXNzIFRva2VuCi0g55m75Ye65pe25Z+65LqOIFJlZGlzIOeahCBUb2tlbiDpu5HlkI3ljZUKLSDmjInnjq/looPljLrliIbnmoQgQ29va2llIOWxnuaApyhzZWN1cmUgLyBTYW1lU2l0ZSkKLSDpgJrov4fnjq/looPlj5jph4/phY3nva4gQ09SUwotIOmAmui/h+eOr+Wig+WPmOmHj+W8uuWItuimgeaxgiBgSldUX1NFQ1JFVGAKCiMjIyMg6K6h5YiS5pS56L+bCi0g5q+P5qyh5Yi35paw6YO96L+b6KGMIFRva2VuIOi9ruaNoijlvZPliY06UmVmcmVzaCBUb2tlbiA3IOWkqeacieaViCkKLSDlvJXlhaUgQ1NSRiBUb2tlbiDku6Xmj5Dkvpvpop3lpJbkv53miqQKLSDlr7norqTor4HmjqXlj6PliqDlhaXpmZDmtYEKCiMjIyDmnYPooaHkuI7pmZDliLYKLSAqKkNTUkYqKjrkuLrkv53mjIHml6DnirbmgIEgSldUIOa1geeoi+iAjOiiq+emgeeUqOOAguWcqOeUn+S6p+eOr+Wig+S4remAmui/hyBgU2FtZVNpdGU9U3RyaWN0YCDnvJPop6PjgILlpoLmnInmm7Tpq5jlronlhajopoHmsYIs5Y+v6ICD6JmR5Yqg5YWlIENTUkYgVG9rZW7jgIIKLSAqKlRva2VuIOi9ruaNoioqOuebruWJjSBSZWZyZXNoIFRva2VuIDcg5aSp5YaF5pyJ5pWI44CC5Zyo5q+P5qyh5L2/55So5pe26L+b6KGM6L2u5o2i5Y+v5Lul5qOA5rWL5rOE6ZyyLOS9huS8muWinuWKoOWkjeadguW6puOAggotICoq5peg54q25oCB5oCnKio6SldUIOacrOi6q+aXoOeKtuaAgSzkvYYgVG9rZW4g5ZCK6ZSA6ZyA6KaBIFJlZGlzIOeKtuaAgeOAggotICoq5Lya6K+d57uR5a6aKio6UmVmcmVzaCBUb2tlbiDkuI7ljp/lp4vorr7lpIcgLyDkvJror53nu5HlrprjgIIKCiMjIPCfp6og5rWL6K+VCgrkvb/nlKggTWF2ZW4g6L+Q6KGM6ZuG5oiQ5rWL6K+VOgpgYGBiYXNoCi4vbXZudyB0ZXN0CmBgYArmtYvor5Xkvb/nlKggSDIg5pWw5o2u5bqT5ZKM5YaF5bWMIFJlZGlzIOmFjee9ruS7peS/neivgemalOemu+aAp+OAggoKIyMg8J+TnSDorrjlj6/or4EKTUlUCgotLS0KCiMjIPCfh6/wn4e1IOaXpeacrOiqniB8IPCfh6zwn4enIEVuZ2xpc2gKCi0gW+aXpeacrOiqnueJiF0oLi9SRUFETUUubWQpCi0gW0VuZ2xpc2ggdmVyc2lvbl0oLi9SRUFETUUuZW4ubWQpCg==
+# Spring Boot + React 全栈演示项目
+
+一个**面向生产环境**的全栈演示应用,展示了基于 HttpOnly Cookie 的 Refresh Token 安全认证模式、会话管理以及可配置的安全设置。
+
+## 🚀 核心特性
+
+- **安全认证**:
+  - **HttpOnly Cookie**:Refresh Token 存储在 HttpOnly Cookie 中,以防止 XSS 攻击。
+  - **会话管理**:Access Token 存储在 `sessionStorage` 中(按 Tab 隔离)。
+  - **黑名单机制**:登出时使用 Redis 将活跃 Token 加入黑名单。
+- **基于环境的安全配置**:
+  - **CORS**:可按环境(dev / test / prod profile)进行配置。
+  - **Cookie 属性**:`secure` 和 `SameSite` 随环境不同而变化。
+  - **密钥管理**:`JWT_SECRET` 通过环境变量管理。
+
+## 🏗 架构概览
+
+### 各组件的职责
+
+- **后端(Spring Boot)**:签发 JWT Token、校验凭证、管理会话状态、执行安全策略,并在 Redis 中处理 Token 黑名单。
+- **前端(React)**:管理 UI 状态,将 Access Token 存储在 sessionStorage 中,在遇到 401 时触发刷新,并处理登录/登出的 UI 流程。
+- **Redis**:存储用于即时吊销的 Token 黑名单,同时作为活跃会话的会话状态存储。
+
+### Token 职责划分
+
+- **Access Token**:短期有效(1 小时),用于 API 鉴权,存储在 sessionStorage 中以避免被 XSS 访问。
+- **Refresh Token**:长期有效(7 天),用于获取新的 Access Token,存储在 HttpOnly Cookie 中以避免被 XSS 窃取。
+
+### 为什么选择 sessionStorage?
+
+我们没有选择 `localStorage`,而是选择 `sessionStorage`,是因为它**按 Tab 隔离**并且**在 Tab 关闭时被清除**。这可以提供更好的会话间安全隔离,降低 Token 在不同浏览上下文之间被复用的风险。同时,它还能自动实现许多应用所期望的"关闭浏览器即登出"的行为。
+
+### 为什么需要黑名单?
+
+JWT 本身是无状态的,但我们仍然需要**即时吊销会话**的能力(例如:用户点击登出、管理员强制结束会话、检测到安全事件等)。基于 Redis 的黑名单可以在 Token 校验时提供 O(1) 查找,让我们在"以无状态为主"和"必要时即时吊销"之间兼得。
+
+## 🛠 技术栈
+
+- **后端**:Spring Boot 3.x、Spring Security 6、JPA、Redis、MySQL/H2
+- **前端**:React 18、TypeScript、Axios、Context API
+- **测试**:JUnit 5、MockMvc、TestContainers 就绪
+
+## 🏃‍♂️ 快速开始
+
+### 环境要求
+- Java 17 及以上
+- Node.js 18 及以上
+- Docker(可选,用于 Redis/MySQL)
+
+### 后端设置
+
+1. **配置环境变量**:
+   设置所需的环境变量。`JWT_SECRET` 是必填项,长度至少需要 32 字节。
+   ```bash
+   export JWT_SECRET=your_secure_random_secret_key_at_least_32_bytes
+   export CORS_ALLOWED_ORIGINS=http://localhost:3000
+   ```
+   
+   **必填环境变量**:
+   - `JWT_SECRET`:安全的随机密钥(至少 32 字节)
+   - `CORS_ALLOWED_ORIGINS`:前端应用的来源
+   
+   **可选环境变量**:
+   - `JWT_EXPIRATION`:Access Token 过期时间(毫秒,默认:3600000)
+   - `JWT_REFRESH_EXPIRATION`:Refresh Token 过期时间(毫秒,默认:86400000)
+
+2. **使用 Maven 运行**:
+   ```bash
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+### 前端设置
+
+1. **配置环境变量**:
+   在 `frontend` 目录下创建一个 `.env` 文件:
+   ```env
+   REACT_APP_API_BASE_URL=http://localhost:8080/api
+   ```
+
+2. **安装与运行**:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+## 🔒 安全实现细节
+
+### 认证流程
+1. **登录**:客户端提交凭证。服务端校验成功后返回:
+   - `accessToken`(放在 JSON Body 中)→ 存储在 `sessionStorage`。
+   - `refreshToken`(HttpOnly Cookie)→ 由浏览器自动处理。
+2. **访问接口**:客户端在请求头携带 `Authorization: Bearer <token>`。
+3. **刷新**:当 Access Token 过期(收到 401)时,客户端调用 `/refresh`,服务端校验 Cookie 后返回新的 Access Token。
+4. **登出**:客户端调用 `/logout`,服务端清除 Cookie 并将 Access Token 加入 Redis 黑名单。
+
+### 按环境区分的 Cookie 安全策略
+- **Development**:`secure=false`、`SameSite=Lax`(允许 localhost 使用 HTTP)
+- **Test**:`secure=false`、`SameSite=Strict`(更严格的 CSRF 防护)
+- **Production**:`secure=true`、`SameSite=Strict`(强制 HTTPS)
+
+### 当前状态
+
+#### 已实现
+- 用于 Refresh Token 的 HttpOnly Cookie
+- 存储在 sessionStorage 中的 Access Token
+- 登出时基于 Redis 的 Token 黑名单
+- 按环境区分的 Cookie 属性(secure / SameSite)
+- 通过环境变量配置 CORS
+- 通过环境变量强制要求 `JWT_SECRET`
+
+#### 计划改进
+- 每次刷新都进行 Token 轮换(当前:Refresh Token 7 天有效)
+- 引入 CSRF Token 以提供额外保护
+- 对认证接口加入限流
+
+### 权衡与限制
+- **CSRF**:为保持无状态 JWT 流程而被禁用。在生产环境中通过 `SameSite=Strict` 缓解。如有更高安全要求,可考虑加入 CSRF Token。
+- **Token 轮换**:目前 Refresh Token 7 天内有效。在每次使用时进行轮换可以检测泄露,但会增加复杂度。
+- **无状态性**:JWT 本身无状态,但 Token 吊销需要 Redis 状态。
+- **会话绑定**:Refresh Token 与原始设备 / 会话绑定。
+
+## 🧪 测试
+
+使用 Maven 运行集成测试:
+```bash
+./mvnw test
+```
+测试使用 H2 数据库和内嵌 Redis 配置以保证隔离性。
+
+## 📝 许可证
+MIT
+
+---
+
+## 🇯🇵 日本語 | 🇬🇧 English
+
+- [日本語版](./README.md)
+- [English version](./README.en.md)

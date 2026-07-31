@@ -1,1 +1,140 @@
-IyBTcHJpbmcgQm9vdCArIFJlYWN0IOODleODq+OCueOCv+ODg+OCr+ODh+ODogoKSHR0cE9ubHkgQ29va2llIOODmeODvOOCueOBruODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OAgeOCu+ODg+OCt+ODp+ODs+euoeeQhuOAgeioreWumuWPr+iDveOBquOCu+OCreODpeODquODhuOCo+ioreWumuOCkuWCmeOBiOOBn+OAgSoq44OX44Ot44OA44Kv44K344On44Oz5b+X5ZCRKirjga7jg5Xjg6vjgrnjgr/jg4Pjgq/jg4fjg6LjgqLjg5fjg6rjgrHjg7zjgrfjg6fjg7PjgafjgZnjgILlronlhajjgaroqo3oqLzjg5Hjgr/jg7zjg7PjgpLlrp/oo4XjgZfjgabjgYTjgb7jgZnjgIIKCiMjIPCfmoAg5Li744Gq5qmf6IO9CgotICoq5a6J5YWo44Gq6KqN6Ki8Kio6CiAgLSAqKkh0dHBPbmx5IENvb2tpZSoqOuODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OCkiBIdHRwT25seSBDb29raWUg44Gr5L+d5a2Y44GX44CBWFNTIOaUu+aSg+OCkumYsuatouOBl+OBvuOBmeOAggogIC0gKirjgrvjg4Pjgrfjg6fjg7PnrqHnkIYqKjrjgqLjgq/jgrvjgrnjg4jjg7zjgq/jg7Pjga8gYHNlc3Npb25TdG9yYWdlYCjjgr/jg5blm7rmnIkp44Gr5L+d5a2Y44GV44KM44G+44GZ44CCCiAgLSAqKuODluODqeODg+OCr+ODquOCueODiCoqOuODreOCsOOCouOCpuODiOaZguOBqyBSZWRpcyDjgpLkvb/jgaPjgabjgqLjgq/jg4bjgqPjg5bjgarjg4jjg7zjgq/jg7PjgpLjg5bjg6njg4Pjgq/jg6rjgrnjg4jljJbjgZfjgb7jgZnjgIIKLSAqKueSsOWig+ODmeODvOOCueOBruOCu+OCreODpeODquODhuOCoyoqOgogIC0gKipDT1JTKio655Kw5aKDKGRldiAvIHRlc3QgLyBwcm9kIOODl+ODreODleOCoeOCpOODqynjgZTjgajjgavoqK3lrprlj6/og73jgIIKICAtICoqQ29va2llIOWxnuaApyoqOmBzZWN1cmVgIOOBqCBgU2FtZVNpdGVgIOOBr+eSsOWig+OBlOOBqOOBq+eVsOOBquOCiuOBvuOBmeOAggogIC0gKirjgrfjg7zjgq/jg6zjg4Pjg4gqKjpgSldUX1NFQ1JFVGAg44Gv55Kw5aKD5aSJ5pWw44Gn566h55CG44GX44G+44GZ44CCCgojIyDwn4+XIOOCouODvOOCreODhuOCr+ODgeODo+amguimgQoKIyMjIOOCs+ODs+ODneODvOODjeODs+ODiOOBlOOBqOOBruW9ueWJsgoKLSAqKuODkOODg+OCr+OCqOODs+ODiShTcHJpbmcgQm9vdCkqKjpKV1Qg44OI44O844Kv44Oz44Gu55m66KGM44CB6LOH5qC85oOF5aCx44Gu5qSc6Ki844CB44K744OD44K344On44Oz54q25oWL44Gu566h55CG44CB44K744Kt44Ol44Oq44OG44Kj44Od44Oq44K344O844Gu6YGp55So44CBUmVkaXMg44Gn44Gu44OI44O844Kv44Oz44OW44Op44OD44Kv44Oq44K544OI5Yem55CG44KS5ouF5b2T44GX44G+44GZ44CCCi0gKirjg5Xjg63jg7Pjg4jjgqjjg7Pjg4koUmVhY3QpKio6VUkg54q25oWL44KS566h55CG44GX44CB44Ki44Kv44K744K544OI44O844Kv44Oz44KSIHNlc3Npb25TdG9yYWdlIOOBq+S/neWtmOOAgTQwMSDjgqjjg6njg7zmmYLjgavjg6rjg5Xjg6zjg4Pjgrfjg6XjgpLjg4jjg6rjgqzjg7zjgZfjgIHjg63jgrDjgqTjg7Mv44Ot44Kw44Ki44Km44OI44GuIFVJIOODleODreODvOOCkuWHpueQhuOBl+OBvuOBmeOAggotICoqUmVkaXMqKjrljbPmmYLlpLHlirnjga7jgZ/jgoHjga7jg4jjg7zjgq/jg7Pjg5bjg6njg4Pjgq/jg6rjgrnjg4jjgpLkv53mjIHjgZfjgIHjgqLjgq/jg4bjgqPjg5bjgrvjg4Pjgrfjg6fjg7Pjga7jgrvjg4Pjgrfjg6fjg7Pjgrnjg4jjgqLjgajjgZfjgabmqZ/og73jgZfjgb7jgZnjgIIKCiMjIyDjg4jjg7zjgq/jg7Pjga7osqzli5nliIbmi4UKCi0gKirjgqLjgq/jgrvjgrnjg4jjg7zjgq/jg7MqKjrmnInlirnmnJ/plpPjga/nn63jgY8oMSDmmYLplpMp44CBQVBJIOiqjeiovOOBq+S9v+eUqOOBleOCjOOAgVhTUyDjgqLjgq/jgrvjgrnjgpLpmLLjgZDjgZ/jgoHjgasgc2Vzc2lvblN0b3JhZ2Ug44Gr5L+d5a2Y44GV44KM44G+44GZ44CCCi0gKirjg6rjg5Xjg6zjg4Pjgrfjg6Xjg4jjg7zjgq/jg7MqKjrmnInlirnmnJ/plpPjga/plbfjgY8oNyDml6XplpMp44CB5paw44GX44GE44Ki44Kv44K744K544OI44O844Kv44Oz44KS5Y+W5b6X44GZ44KL44Gf44KB44Gr5L2/55So44GV44KM44CBWFNTIOOBq+OCiOOCi+eqg+WPluOCkumYsuOBkOOBn+OCgeOBqyBIdHRwT25seSBDb29raWUg44Gr5L+d5a2Y44GV44KM44G+44GZ44CCCgojIyMg44Gq44GcIHNlc3Npb25TdG9yYWdlIOOBiz8KCmBsb2NhbFN0b3JhZ2VgIOOBp+OBr+OBquOBjyBgc2Vzc2lvblN0b3JhZ2VgIOOCkumBuOOCk+OBoOeQhueUseOBr+OAgSoq44K/44OW5Zu65pyJKirjgacqKuOCv+ODluOCkumWieOBmOOCi+OBqOOCr+ODquOCouOBleOCjOOCiyoq44Gf44KB44Gn44GZ44CC44GT44KM44Gr44KI44KK44CB44K744OD44K344On44Oz6ZaT44Gu44K744Kt44Ol44Oq44OG44Kj5YiG6Zui44GM5ZCR5LiK44GX44CB55Ww44Gq44KL44OW44Op44Km44K444Oz44Kw44Kz44Oz44OG44Kt44K544OI6ZaT44Gn44Gu44OI44O844Kv44Oz5YaN5Yip55So44Oq44K544Kv44GM5L2O5rib44GX44G+44GZ44CC44G+44Gf44CB5aSa44GP44Gu44Ki44OX44Oq44Kx44O844K344On44Oz44GM5pyf5b6F44GZ44KL44CM44OW44Op44Km44K244KS6ZaJ44GY44Gf44KJ44Ot44Kw44Ki44Km44OI44CN44Go44GE44GG5oyZ5YuV44KC6Ieq5YuV55qE44Gr5a6f54++44Gn44GN44G+44GZ44CCCgojIyMg44Gq44Gc44OW44Op44OD44Kv44Oq44K544OI44GLPwoKSldUIOOBr+acrOadpeOCueODhuODvOODiOODrOOCueOBp+OBmeOBjOOAgeOBneOCjOOBp+OCgioq44K744OD44K344On44Oz44KS55u044Gh44Gr5aSx5Yq544GV44Gb44KLKirmqZ/og73jgYzlv4XopoHjgafjgZko5L6LOuODpuODvOOCtuODvOOBjOODreOCsOOCouOCpuODiOOCkuOCr+ODquODg+OCr+OBl+OBn+OAgeeuoeeQhuiAheOBjOOCu+ODg+OCt+ODp+ODs+OCkuW8t+WItue1guS6huOBl+OBn+OAgeOCu+OCreODpeODquODhuOCo+S+teWus+OCkuaknOefpeOBl+OBn+OBquOBqSnjgIJSZWRpcyDjg5njg7zjgrnjga7jg5bjg6njg4Pjgq/jg6rjgrnjg4jjgavjgojjgorjgIHjg4jjg7zjgq/jg7PmpJzoqLzmmYLjgasgTygxKSDjg6vjg4Pjgq/jgqLjg4Pjg5fjgYzlj6/og73jgajjgarjgorjgIHjgIzjgbvjgbzjgrnjg4bjg7zjg4jjg6zjgrnjgaogSldU44CN44Go44CM5b+F6KaB44Gr5b+c44GY44Gf5Y2z5pmC5aSx5Yq55qmf6IO944CN44Gu5Lih56uL44KS5a6f54++44Gn44GN44G+44GZ44CCCgojIyDwn5ugIOaKgOihk+OCueOCv+ODg+OCrwoKLSAqKuODkOODg+OCr+OCqOODs+ODiSoqOlNwcmluZyBCb290IDMueOOAgVNwcmluZyBTZWN1cml0eSA244CBSlBB44CBUmVkaXPjgIFNeVNRTC9IMgotICoq44OV44Ot44Oz44OI44Ko44Oz44OJKio6UmVhY3QgMTjjgIFUeXBlU2NyaXB044CBQXhpb3PjgIFDb250ZXh0IEFQSQotICoq44OG44K544OIKio6SlVuaXQgNeOAgU1vY2tNdmPjgIFUZXN0Q29udGFpbmVycyDlr77lv5wKCiMjIPCfj4PigI3imYLvuI8g44Gv44GY44KB44GrCgojIyMg5YmN5o+Q5p2h5Lu2Ci0gSmF2YSAxNyDku6XkuIoKLSBOb2RlLmpzIDE4IOS7peS4igotIERvY2tlcijku7vmhI/jgIFSZWRpcy9NeVNRTCDnlKgpCgojIyMg44OQ44OD44Kv44Ko44Oz44OJ44Gu44K744OD44OI44Ki44OD44OXCgoxLiAqKueSsOWig+WkieaVsOOBruioreWumioqOgogICDlv4XopoHjgarnkrDlooPlpInmlbDjgpLoqK3lrprjgZfjgb7jgZnjgIJgSldUX1NFQ1JFVGAg44Gv5b+F6aCI44Gn44CBMzIg44OQ44Kk44OI5Lul5LiK44Gn44GC44KL5b+F6KaB44GM44GC44KK44G+44GZ44CCCiAgIGBgYGJhc2gKICAgZXhwb3J0IEpXVF9TRUNSRVQ9eW91cl9zZWN1cmVfcmFuZG9tX3NlY3JldF9rZXlfYXRfbGVhc3RfMzJfYnl0ZXMKICAgZXhwb3J0IENPUlNfQUxMT1dFRF9PUklHSU5TPWh0dHA6Ly9sb2NhbGhvc3Q6MzAwMAogICBgYGAKICAgCiAgICoq5b+F6aCI55Kw5aKD5aSJ5pWwKio6CiAgIC0gYEpXVF9TRUNSRVRgOuWuieWFqOOBquODqeODs+ODgOODoOOCt+ODvOOCr+ODrOODg+ODiOOCreODvCgzMiDjg5DjgqTjg4jku6XkuIopCiAgIC0gYENPUlNfQUxMT1dFRF9PUklHSU5TYDrjg5Xjg63jg7Pjg4jjgqjjg7Pjg4njgqLjg5fjg6rjgrHjg7zjgrfjg6fjg7Pjga7jgqrjg6rjgrjjg7MKICAgCiAgICoq5Lu75oSP55Kw5aKD5aSJ5pWwKio6CiAgIC0gYEpXVF9FWFBJUkFUSU9OYDrjgqLjgq/jgrvjgrnjg4jjg7zjgq/jg7Pjga7mnInlirnmnJ/pmZAo44Of44Oq56eS44CB44OH44OV44Kp44Or44OIOjM2MDAwMDApCiAgIC0gYEpXVF9SRUZSRVNIX0VYUElSQVRJT05gOuODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OBruacieWKueacn+mZkCjjg5/jg6rnp5LjgIHjg4fjg5Xjgqnjg6vjg4g6ODY0MDAwMDApCgoyLiAqKk1hdmVuIOOBp+Wun+ihjCoqOgogICBgYGBiYXNoCiAgIGNkIGJhY2tlbmQKICAgLi9tdm53IHNwcmluZy1ib290OnJ1bgogICBgYGAKCiMjIyDjg5Xjg63jg7Pjg4jjgqjjg7Pjg4njga7jgrvjg4Pjg4jjgqLjg4Pjg5cKCjEuICoq55Kw5aKD5aSJ5pWw44Gu6Kit5a6aKio6CiAgIGBmcm9udGVuZGAg44OH44Kj44Os44Kv44OI44Oq44GrIGAuZW52YCDjg5XjgqHjgqTjg6vjgpLkvZzmiJDjgZfjgb7jgZk6CiAgIGBgYGVudgogICBSRUFDVF9BUFBfQVBJX0JBU0VfVVJMPWh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkKICAgYGBgCgoyLiAqKuOCpOODs+OCueODiOODvOODq+OBqOWun+ihjCoqOgogICBgYGBiYXNoCiAgIGNkIGZyb250ZW5kCiAgIG5wbSBpbnN0YWxsCiAgIG5wbSBzdGFydAogICBgYGAKCiMjIPCflJIg44K744Kt44Ol44Oq44OG44Kj5a6f6KOF44Gu6Kmz57SwCgojIyMg6KqN6Ki844OV44Ot44O8CjEuICoq44Ot44Kw44Kk44OzKio644Kv44Op44Kk44Ki44Oz44OI44GM6LOH5qC85oOF5aCx44KS6YCB5L+h44GX44G+44GZ44CC44K144O844OQ44O844Gv5qSc6Ki844GX44CB5Lul5LiL44KS6L+U44GX44G+44GZOgogICAtIGBhY2Nlc3NUb2tlbmAoSlNPTiDjg5zjg4fjgqMp4oaSIGBzZXNzaW9uU3RvcmFnZWAg44Gr5L+d5a2Y44CCCiAgIC0gYHJlZnJlc2hUb2tlbmAoSHR0cE9ubHkgQ29va2llKeKGkiDjg5bjg6njgqbjgrbjgYzoh6rli5XnmoTjgavlh6bnkIbjgIIKMi4gKirjgqLjgq/jgrvjgrkqKjrjgq/jg6njgqTjgqLjg7Pjg4jjgYwgYEF1dGhvcml6YXRpb246IEJlYXJlciA8dG9rZW4+YCDjg5jjg4Pjg4Djg7zjgpLpgIHkv6HjgZfjgb7jgZnjgIIKMy4gKirjg6rjg5Xjg6zjg4Pjgrfjg6UqKjrjgqLjgq/jgrvjgrnjg4jjg7zjgq/jg7Pjga7mnInlirnmnJ/pmZDjgYzliIfjgozjgovjgagoNDAxKeOAgeOCr+ODqeOCpOOCouODs+ODiOOBryBgL3JlZnJlc2hgIOOCkuWRvOOBs+WHuuOBl+OBvuOBmeOAguOCteODvOODkOODvOOBryBDb29raWUg44KS5qSc6Ki844GX44CB5paw44GX44GE44Ki44Kv44K744K544OI44O844Kv44Oz44KS6L+U44GX44G+44GZ44CCCjQuICoq44Ot44Kw44Ki44Km44OIKio644Kv44Op44Kk44Ki44Oz44OI44GMIGAvbG9nb3V0YCDjgpLlkbzjgbPlh7rjgZfjgb7jgZnjgILjgrXjg7zjg5Djg7zjga8gQ29va2llIOOCkueEoeWKueWMluOBl+OAgVJlZGlzIOOBp+OCouOCr+OCu+OCueODiOODvOOCr+ODs+OCkuODluODqeODg+OCr+ODquOCueODiOWMluOBl+OBvuOBmeOAggoKIyMjIOeSsOWig+WIpeOBriBDb29raWUg44K744Kt44Ol44Oq44OG44KjCi0gKipEZXZlbG9wbWVudCoqOmBzZWN1cmU9ZmFsc2Vg44CBYFNhbWVTaXRlPUxheGAobG9jYWxob3N0IOOBp+OBryBIVFRQIOOCkuioseWPrykKLSAqKlRlc3QqKjpgc2VjdXJlPWZhbHNlYOOAgWBTYW1lU2l0ZT1TdHJpY3RgKENTUkYg5a++562W44KS44KI44KK5Y6z5qC844GrKQotICoqUHJvZHVjdGlvbioqOmBzZWN1cmU9dHJ1ZWDjgIFgU2FtZVNpdGU9U3RyaWN0YChIVFRQUyDlv4XpoIgpCgojIyMg54++54q2CgojIyMjIOWun+ijhea4iOOBvwotIOODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+eUqOOBriBIdHRwT25seSBDb29raWUKLSBzZXNzaW9uU3RvcmFnZSDjgavkv53lrZjjgZnjgovjgqLjgq/jgrvjgrnjg4jjg7zjgq/jg7MKLSDjg63jgrDjgqLjgqbjg4jmmYLjga4gUmVkaXMg44OZ44O844K544OI44O844Kv44Oz44OW44Op44OD44Kv44Oq44K544OICi0g55Kw5aKD5Yil44GuIENvb2tpZSDlsZ7mgKcoc2VjdXJlIC8gU2FtZVNpdGUpCi0g55Kw5aKD5aSJ5pWw44Gr44KI44KLIENPUlMg6Kit5a6aCi0g55Kw5aKD5aSJ5pWw44Gr44KI44KL5b+F6aCI5YyW44GV44KM44GfIGBKV1RfU0VDUkVUYAoKIyMjIyDku4rlvozjga7mlLnlloTkuojlrpoKLSDjg6rjg5Xjg6zjg4Pjgrfjg6XjgZTjgajjga7jg4jjg7zjgq/jg7Pjg63jg7zjg4bjg7zjgrfjg6fjg7Mo54++5ZyoOuODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OBryA3IOaXpemWk+acieWKuSkKLSDov73liqDkv53orbfjga7jgZ/jgoHjga4gQ1NSRiDjg4jjg7zjgq/jg7PntbHlkIgKLSDoqo3oqLzjgqjjg7Pjg4njg53jgqTjg7Pjg4jjgbjjga7jg6zjg7zjg4jjg6rjg5/jg4Pjg4gKCiMjIyDjg4jjg6zjg7zjg4njgqrjg5XjgajliLbntIQKLSAqKkNTUkYqKjrjgrnjg4bjg7zjg4jjg6zjgrnjgaogSldUIOODleODreODvOOBruOBn+OCgeeEoeWKueWMluOAguacrOeVquOBp+OBryBgU2FtZVNpdGU9U3RyaWN0YCDjgafnt6nlkozjgILjgojjgorpq5jjgYTjgrvjgq3jg6Xjg6rjg4bjgqPopoHku7bjgafjga8gQ1NSRiDjg4jjg7zjgq/jg7Pjga7ov73liqDjgpLmpJzoqI7jgIIKLSAqKuODiOODvOOCr+ODs+ODreODvOODhuODvOOCt+ODp+ODsyoqOuePvuWcqOOAgeODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OBryA3IOaXpemWk+acieWKueOAguS9v+eUqOOBlOOBqOOBq+ODreODvOODhuODvOOCt+ODp+ODs+OBmeOCi+OBqOebl+mbo+aknOefpeOBjOWPr+iDveOBq+OBquOCi+OBjOOAgeikh+mbkeW6puOBr+S4iuOBjOOCi+OAggotICoq44K544OG44O844OI44Os44K55oCnKio6SldUIOOBr+OCueODhuODvOODiOODrOOCueOBoOOBjOOAgeODiOODvOOCr+ODs+WkseWKueOBq+OBryBSZWRpcyDjga7nirbmhYvjgYzlv4XopoHjgIIKLSAqKuOCu+ODg+OCt+ODp+ODs+e1kOWQiCoqOuODquODleODrOODg+OCt+ODpeODiOODvOOCr+ODs+OBr+WFg+OBruODh+ODkOOCpOOCuSAvIOOCu+ODg+OCt+ODp+ODs+OBq+e0kOS7mOOBkeOCieOCjOOCi+OAggoKIyMg8J+nqiDjg4bjgrnjg4gKCk1hdmVuIOOCkuS9v+OBo+OBpue1kOWQiOODhuOCueODiOOCkuWun+ihjOOBl+OBvuOBmToKYGBgYmFzaAouL212bncgdGVzdApgYGAK44OG44K544OI44Gv5YiG6Zui44Gu44Gf44KBIEgyIOODh+ODvOOCv+ODmeODvOOCueOBqOe1hOOBv+i+vOOBvyBSZWRpcyDoqK3lrprjgpLkvb/nlKjjgZfjgb7jgZnjgIIKCiMjIPCfk50g44Op44Kk44K744Oz44K5Ck1JVAoKLS0tCgojIyDwn4es8J+HpyBFbmdsaXNoIHwg8J+HqPCfh7Mg5Lit5paHCgotIFtFbmdsaXNoIHZlcnNpb25dKC4vUkVBRE1FLmVuLm1kKQotIFvkuK3mlofniYjmnKxdKC4vUkVBRE1FLnpoLm1kKQo=
+# Spring Boot + React フルスタックデモ
+
+HttpOnly Cookie ベースのリフレッシュトークン、セッション管理、設定可能なセキュリティ設定を備えた、**プロダクション志向**のフルスタックデモアプリケーションです。安全な認証パターンを実装しています。
+
+## 🚀 主な機能
+
+- **安全な認証**:
+  - **HttpOnly Cookie**:リフレッシュトークンを HttpOnly Cookie に保存し、XSS 攻撃を防止します。
+  - **セッション管理**:アクセストークンは `sessionStorage`(タブ固有)に保存されます。
+  - **ブラックリスト**:ログアウト時に Redis を使ってアクティブなトークンをブラックリスト化します。
+- **環境ベースのセキュリティ**:
+  - **CORS**:環境(dev / test / prod プロファイル)ごとに設定可能。
+  - **Cookie 属性**:`secure` と `SameSite` は環境ごとに異なります。
+  - **シークレット**:`JWT_SECRET` は環境変数で管理します。
+
+## 🏗 アーキテクチャ概要
+
+### コンポーネントごとの役割
+
+- **バックエンド(Spring Boot)**:JWT トークンの発行、資格情報の検証、セッション状態の管理、セキュリティポリシーの適用、Redis でのトークンブラックリスト処理を担当します。
+- **フロントエンド(React)**:UI 状態を管理し、アクセストークンを sessionStorage に保存、401 エラー時にリフレッシュをトリガーし、ログイン/ログアウトの UI フローを処理します。
+- **Redis**:即時失効のためのトークンブラックリストを保持し、アクティブセッションのセッションストアとして機能します。
+
+### トークンの責務分担
+
+- **アクセストークン**:有効期間は短く(1 時間)、API 認証に使用され、XSS アクセスを防ぐために sessionStorage に保存されます。
+- **リフレッシュトークン**:有効期間は長く(7 日間)、新しいアクセストークンを取得するために使用され、XSS による窃取を防ぐために HttpOnly Cookie に保存されます。
+
+### なぜ sessionStorage か?
+
+`localStorage` ではなく `sessionStorage` を選んだ理由は、**タブ固有**で**タブを閉じるとクリアされる**ためです。これにより、セッション間のセキュリティ分離が向上し、異なるブラウジングコンテキスト間でのトークン再利用リスクが低減します。また、多くのアプリケーションが期待する「ブラウザを閉じたらログアウト」という挙動も自動的に実現できます。
+
+### なぜブラックリストか?
+
+JWT は本来ステートレスですが、それでも**セッションを直ちに失効させる**機能が必要です(例:ユーザーがログアウトをクリックした、管理者がセッションを強制終了した、セキュリティ侵害を検知したなど)。Redis ベースのブラックリストにより、トークン検証時に O(1) ルックアップが可能となり、「ほぼステートレスな JWT」と「必要に応じた即時失効機能」の両立を実現できます。
+
+## 🛠 技術スタック
+
+- **バックエンド**:Spring Boot 3.x、Spring Security 6、JPA、Redis、MySQL/H2
+- **フロントエンド**:React 18、TypeScript、Axios、Context API
+- **テスト**:JUnit 5、MockMvc、TestContainers 対応
+
+## 🏃‍♂️ はじめに
+
+### 前提条件
+- Java 17 以上
+- Node.js 18 以上
+- Docker(任意、Redis/MySQL 用)
+
+### バックエンドのセットアップ
+
+1. **環境変数の設定**:
+   必要な環境変数を設定します。`JWT_SECRET` は必須で、32 バイト以上である必要があります。
+   ```bash
+   export JWT_SECRET=your_secure_random_secret_key_at_least_32_bytes
+   export CORS_ALLOWED_ORIGINS=http://localhost:3000
+   ```
+   
+   **必須環境変数**:
+   - `JWT_SECRET`:安全なランダムシークレットキー(32 バイト以上)
+   - `CORS_ALLOWED_ORIGINS`:フロントエンドアプリケーションのオリジン
+   
+   **任意環境変数**:
+   - `JWT_EXPIRATION`:アクセストークンの有効期限(ミリ秒、デフォルト:3600000)
+   - `JWT_REFRESH_EXPIRATION`:リフレッシュトークンの有効期限(ミリ秒、デフォルト:86400000)
+
+2. **Maven で実行**:
+   ```bash
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+### フロントエンドのセットアップ
+
+1. **環境変数の設定**:
+   `frontend` ディレクトリに `.env` ファイルを作成します:
+   ```env
+   REACT_APP_API_BASE_URL=http://localhost:8080/api
+   ```
+
+2. **インストールと実行**:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+## 🔒 セキュリティ実装の詳細
+
+### 認証フロー
+1. **ログイン**:クライアントが資格情報を送信します。サーバーは検証し、以下を返します:
+   - `accessToken`(JSON ボディ)→ `sessionStorage` に保存。
+   - `refreshToken`(HttpOnly Cookie)→ ブラウザが自動的に処理。
+2. **アクセス**:クライアントが `Authorization: Bearer <token>` ヘッダーを送信します。
+3. **リフレッシュ**:アクセストークンの有効期限が切れると(401)、クライアントは `/refresh` を呼び出します。サーバーは Cookie を検証し、新しいアクセストークンを返します。
+4. **ログアウト**:クライアントが `/logout` を呼び出します。サーバーは Cookie を無効化し、Redis でアクセストークンをブラックリスト化します。
+
+### 環境別の Cookie セキュリティ
+- **Development**:`secure=false`、`SameSite=Lax`(localhost では HTTP を許可)
+- **Test**:`secure=false`、`SameSite=Strict`(CSRF 対策をより厳格に)
+- **Production**:`secure=true`、`SameSite=Strict`(HTTPS 必須)
+
+### 現状
+
+#### 実装済み
+- リフレッシュトークン用の HttpOnly Cookie
+- sessionStorage に保存するアクセストークン
+- ログアウト時の Redis ベーストークンブラックリスト
+- 環境別の Cookie 属性(secure / SameSite)
+- 環境変数による CORS 設定
+- 環境変数による必須化された `JWT_SECRET`
+
+#### 今後の改善予定
+- リフレッシュごとのトークンローテーション(現在:リフレッシュトークンは 7 日間有効)
+- 追加保護のための CSRF トークン統合
+- 認証エンドポイントへのレートリミット
+
+### トレードオフと制約
+- **CSRF**:ステートレスな JWT フローのため無効化。本番では `SameSite=Strict` で緩和。より高いセキュリティ要件では CSRF トークンの追加を検討。
+- **トークンローテーション**:現在、リフレッシュトークンは 7 日間有効。使用ごとにローテーションすると盗難検知が可能になるが、複雑度は上がる。
+- **ステートレス性**:JWT はステートレスだが、トークン失効には Redis の状態が必要。
+- **セッション結合**:リフレッシュトークンは元のデバイス / セッションに紐付けられる。
+
+## 🧪 テスト
+
+Maven を使って結合テストを実行します:
+```bash
+./mvnw test
+```
+テストは分離のため H2 データベースと組み込み Redis 設定を使用します。
+
+## 📝 ライセンス
+MIT
+
+---
+
+## 🇬🇧 English | 🇨🇳 中文
+
+- [English version](./README.en.md)
+- [中文版本](./README.zh.md)

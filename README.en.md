@@ -1,1 +1,133 @@
-IyBTcHJpbmcgQm9vdCArIFJlYWN0IEZ1bGxzdGFjayBEZW1vCgpBIHByb2R1Y3Rpb24tb3JpZW50ZWQgZnVsbC1zdGFjayBkZW1vIGFwcGxpY2F0aW9uIGRlbW9uc3RyYXRpbmcgc2VjdXJlIGF1dGhlbnRpY2F0aW9uIHBhdHRlcm5zIHdpdGggSHR0cE9ubHkgQ29va2llLWJhc2VkIHJlZnJlc2ggdG9rZW5zLCBzZXNzaW9uIG1hbmFnZW1lbnQsIGFuZCBjb25maWd1cmFibGUgc2VjdXJpdHkgc2V0dGluZ3MuCgojIyDwn5qAIEtleSBGZWF0dXJlcwoKLSAqKlNlY3VyZSBBdXRoZW50aWNhdGlvbioqOgogIC0gKipIdHRwT25seSBDb29raWUqKjogUmVmcmVzaCB0b2tlbnMgc3RvcmVkIGluIEh0dHBPbmx5IGNvb2tpZXMgdG8gcHJldmVudCBYU1MgYXR0YWNrcy4KICAtICoqU2Vzc2lvbiBNYW5hZ2VtZW50Kio6IEFjY2VzcyB0b2tlbnMgc3RvcmVkIGluIGBzZXNzaW9uU3RvcmFnZWAgKHRhYi1zcGVjaWZpYykuCiAgLSAqKkJsYWNrbGlzdGluZyoqOiBBY3RpdmUgdG9rZW5zIGJsYWNrbGlzdGVkIG9uIGxvZ291dCB1c2luZyBSZWRpcy4KLSAqKkVudmlyb25tZW50LUJhc2VkIFNlY3VyaXR5Kio6CiAgLSAqKkNPUlMqKjogQ29uZmlndXJhYmxlIHBlciBlbnZpcm9ubWVudCAoZGV2L3Rlc3QvcHJvZCBwcm9maWxlcykuCiAgLSAqKkNvb2tpZSBBdHRyaWJ1dGVzKio6IGBzZWN1cmVgIGFuZCBgU2FtZVNpdGVgIHZhcnkgYnkgZW52aXJvbm1lbnQuCiAgLSAqKlNlY3JldHMqKjogSldUX1NFQ1JFVCBtYW5hZ2VkIHZpYSBlbnZpcm9ubWVudCB2YXJpYWJsZXMuCgojIyDwn4+XIEFyY2hpdGVjdHVyZSBPdmVydmlldwoKIyMjIFJvbGVzIGJ5IENvbXBvbmVudAoKLSAqKkJhY2tlbmQgKFNwcmluZyBCb290KSoqOiBJc3N1ZXMgSldUIHRva2VucywgdmFsaWRhdGVzIGNyZWRlbnRpYWxzLCBtYW5hZ2VzIHNlc3Npb24gc3RhdGUsIGVuZm9yY2VzIHNlY3VyaXR5IHBvbGljaWVzLCBoYW5kbGVzIHRva2VuIGJsYWNrbGlzdCBpbiBSZWRpcy4KLSAqKkZyb250ZW5kIChSZWFjdCkqKjogTWFuYWdlcyBVSSBzdGF0ZSwgc3RvcmVzIGFjY2VzcyB0b2tlbiBpbiBzZXNzaW9uU3RvcmFnZSwgdHJpZ2dlcnMgcmVmcmVzaCBvbiA0MDEgZXJyb3JzLCBoYW5kbGVzIGxvZ2luL2xvZ291dCBVSSBmbG93LgotICoqUmVkaXMqKjogU3RvcmVzIHRva2VuIGJsYWNrbGlzdCBmb3IgaW1tZWRpYXRlIHNlc3Npb24gcmV2b2NhdGlvbiwgYWN0cyBhcyBzZXNzaW9uIHN0YXRlIHN0b3JlIGZvciBhY3RpdmUgc2Vzc2lvbnMuCgojIyMgVG9rZW4gUmVzcG9uc2liaWxpdGllcwoKLSAqKkFjY2VzcyBUb2tlbioqOiBTaG9ydC1saXZlZCAoMSBob3VyKSwgdXNlZCBmb3IgQVBJIGF1dGhvcml6YXRpb24sIHN0b3JlZCBpbiBzZXNzaW9uU3RvcmFnZSB0byBwcmV2ZW50IFhTUyBhY2Nlc3MuCi0gKipSZWZyZXNoIFRva2VuKio6IExvbmctbGl2ZWQgKDcgZGF5cyksIHVzZWQgdG8gb2J0YWluIG5ldyBhY2Nlc3MgdG9rZW5zLCBzdG9yZWQgaW4gSHR0cE9ubHkgQ29va2llIHRvIHByZXZlbnQgWFNTIHRoZWZ0LgoKIyMjIFdoeSBzZXNzaW9uU3RvcmFnZT8KCldlIGNob3NlIGBzZXNzaW9uU3RvcmFnZWAgb3ZlciBgbG9jYWxTdG9yYWdlYCBiZWNhdXNlIGl0IGlzICoqdGFiLXNwZWNpZmljKiogYW5kICoqY2xlYXJlZCB3aGVuIHRoZSB0YWIgY2xvc2VzKiouIFRoaXMgcHJvdmlkZXMgYmV0dGVyIHNlY3VyaXR5IGlzb2xhdGlvbiBiZXR3ZWVuIHNlc3Npb25zIGFuZCByZWR1Y2VzIHRoZSByaXNrIG9mIHRva2VuIHJldXNlIGFjcm9zcyBkaWZmZXJlbnQgYnJvd3NpbmcgY29udGV4dHMuIEl0IGFsc28gYXV0b21hdGljYWxseSBoYW5kbGVzIHRoZSAibG9nb3V0IG9uIGJyb3dzZXIgY2xvc2UiIGJlaGF2aW9yIHRoYXQgbWFueSBhcHBsaWNhdGlvbnMgZXhwZWN0LgoKIyMjIFdoeSBCbGFja2xpc3Q/CgpKV1RzIGFyZSBzdGF0ZWxlc3MgYnkgZGVzaWduLCBidXQgd2Ugc3RpbGwgbmVlZCB0aGUgYWJpbGl0eSB0byAqKmltbWVkaWF0ZWx5IHJldm9rZSBzZXNzaW9ucyoqIChlLmcuLCB1c2VyIGNsaWNrcyBsb2dvdXQsIGFkbWluIHRlcm1pbmF0ZXMgYSBzZXNzaW9uLCBzZWN1cml0eSBicmVhY2ggZGV0ZWN0ZWQpLiBBIFJlZGlzLWJhY2tlZCBibGFja2xpc3QgYWxsb3dzIE8oMSkgbG9va3VwIGR1cmluZyB0b2tlbiB2YWxpZGF0aW9uLCBwcm92aWRpbmcgdGhlIGJlc3Qgb2YgYm90aCB3b3JsZHM6IG1vc3RseSBzdGF0ZWxlc3MgSldUcyB3aXRoIGluc3RhbnQgcmV2b2NhdGlvbiBjYXBhYmlsaXR5IHdoZW4gbmVlZGVkLgoKIyMg8J+boCBUZWNoIFN0YWNrCgotICoqQmFja2VuZCoqOiBTcHJpbmcgQm9vdCAzLngsIFNwcmluZyBTZWN1cml0eSA2LCBKUEEsIFJlZGlzLCBNeVNRTC9IMgotICoqRnJvbnRlbmQqKjogUmVhY3QgMTgsIFR5cGVTY3JpcHQsIEF4aW9zLCBDb250ZXh0IEFQSQotICoqVGVzdGluZyoqOiBKVW5pdCA1LCBNb2NrTXZjLCBUZXN0Q29udGFpbmVycy1yZWFkeQoKIyMg8J+Pg+KAjeKZgu+4jyBHZXR0aW5nIFN0YXJ0ZWQKCiMjIyBQcmVyZXF1aXNpdGVzCi0gSmF2YSAxNysKLSBOb2RlLmpzIDE4KwotIERvY2tlciAob3B0aW9uYWwsIGZvciBSZWRpcy9NeVNRTCkKCiMjIyBCYWNrZW5kIFNldHVwCgoxLiAqKkNvbmZpZ3VyZSBFbnZpcm9ubWVudCoqOgogICBTZXQgdGhlIHJlcXVpcmVkIGVudmlyb25tZW50IHZhcmlhYmxlcy4gSldUX1NFQ1JFVCBpcyBtYW5kYXRvcnkgYW5kIG11c3QgYmUgYXQgbGVhc3QgMzIgYnl0ZXMgbG9uZy4KICAgYGBgYmFzaAogICBleHBvcnQgSldUX1NFQ1JFVD15b3VyX3NlY3VyZV9yYW5kb21fc2VjcmV0X2tleV9hdF9sZWFzdF8zMl9ieXRlcwogICBleHBvcnQgQ09SU19BTExPV0VEX09SSUdJTlM9aHR0cDovL2xvY2FsaG9zdDozMDAwCiAgIGBgYAogICAKICAgKipSZXF1aXJlZCBFbnZpcm9ubWVudCBWYXJpYWJsZXMqKjoKICAgLSBgSldUX1NFQ1JFVGA6IFNlY3VyZSByYW5kb20gc2VjcmV0IGtleSAoYXQgbGVhc3QgMzIgYnl0ZXMpCiAgIC0gYENPUlNfQUxMT1dFRF9PUklHSU5TYDogRnJvbnRlbmQgYXBwbGljYXRpb24gb3JpZ2luKHMpCiAgIAogICAqKk9wdGlvbmFsIEVudmlyb25tZW50IFZhcmlhYmxlcyoqOgogICAtIGBKV1RfRVhQSVJBVElPTmA6IEFjY2VzcyB0b2tlbiBleHBpcmF0aW9uIGluIG1pbGxpc2Vjb25kcyAoZGVmYXVsdDogMzYwMDAwMCkKICAgLSBgSldUX1JFRlJFU0hfRVhQSVJBVElPTmA6IFJlZnJlc2ggdG9rZW4gZXhwaXJhdGlvbiBpbiBtaWxsaXNlY29uZHMgKGRlZmF1bHQ6IDg2NDAwMDAwKQoKMi4gKipSdW4gd2l0aCBNYXZlbioqOgogICBgYGBiYXNoCiAgIGNkIGJhY2tlbmQKICAgLi9tdm53IHNwcmluZy1ib290OnJ1bgogICBgYGAKCiMjIyBGcm9udGVuZCBTZXR1cAoKMS4gKipDb25maWd1cmUgRW52aXJvbm1lbnQqKjoKICAgQ3JlYXRlIGEgYC5lbnZgIGZpbGUgaW4gdGhlIGBmcm9udGVuZGAgZGlyZWN0b3J5OgogICBgYGBlbnYKICAgUkVBQ1RfQVBQX0FQSV9CQVNFX1VSTD1odHRwOi8vbG9jYWxob3N0OjgwODAvYXBpCiAgIGBgYAoKMi4gKipJbnN0YWxsICYgUnVuKio6CiAgIGBgYGJhc2gKICAgY2QgZnJvbnRlbmQKICAgbnBtIGluc3RhbGwKICAgbnBtIHN0YXJ0CiAgIGBgYAoKIyMg8J+UkiBTZWN1cml0eSBJbXBsZW1lbnRhdGlvbiBEZXRhaWxzCgojIyMgQXV0aGVudGljYXRpb24gRmxvdwoxLiAqKkxvZ2luKio6IENsaWVudCBzZW5kcyBjcmVkZW50aWFscy4gU2VydmVyIHZhbGlkYXRlcyBhbmQgcmV0dXJuczoKICAgLSBgYWNjZXNzVG9rZW5gIChKU09OIGJvZHkpIC0+IFN0b3JlZCBpbiBgc2Vzc2lvblN0b3JhZ2VgLgogICAtIGByZWZyZXNoVG9rZW5gIChIdHRwT25seSBDb29raWUpIC0+IEF1dG9tYXRpY2FsbHkgaGFuZGxlZCBieSBicm93c2VyLgoyLiAqKkFjY2VzcyoqOiBDbGllbnQgc2VuZHMgYEF1dGhvcml6YXRpb246IEJlYXJlciA8dG9rZW4+YCBoZWFkZXIuCjMuICoqUmVmcmVzaCoqOiBXaGVuIGFjY2VzcyB0b2tlbiBleHBpcmVzICg0MDEpLCBjbGllbnQgY2FsbHMgYC9yZWZyZXNoYC4gU2VydmVyIHZhbGlkYXRlcyBjb29raWUgYW5kIHJldHVybnMgbmV3IGFjY2VzcyB0b2tlbi4KNC4gKipMb2dvdXQqKjogQ2xpZW50IGNhbGxzIGAvbG9nb3V0YC4gU2VydmVyIGludmFsaWRhdGVzIGNvb2tpZSBhbmQgYmxhY2tsaXN0cyBhY2Nlc3MgdG9rZW4gaW4gUmVkaXMuCgojIyMgQ29va2llIFNlY3VyaXR5IGJ5IEVudmlyb25tZW50Ci0gKipEZXZlbG9wbWVudCoqOiBgc2VjdXJlPWZhbHNlYCwgYFNhbWVTaXRlPUxheGAgKGFsbG93cyBIVFRQIGZvciBsb2NhbGhvc3QpCi0gKipUZXN0Kio6IGBzZWN1cmU9ZmFsc2VgLCBgU2FtZVNpdGU9U3RyaWN0YCAoc3RyaWN0ZXIgQ1NSRiBwcm90ZWN0aW9uKQotICoqUHJvZHVjdGlvbioqOiBgc2VjdXJlPXRydWVgLCBgU2FtZVNpdGU9U3RyaWN0YCAoSFRUUFMgcmVxdWlyZWQpCgojIyMgQ3VycmVudCBTdGF0dXMKCiMjIyMgSW1wbGVtZW50ZWQKLSBIdHRwT25seSBDb29raWUgZm9yIHJlZnJlc2ggdG9rZW5zCi0gQWNjZXNzIHRva2VuIGluIHNlc3Npb25TdG9yYWdlCi0gUmVkaXMtYmFzZWQgdG9rZW4gYmxhY2tsaXN0IG9uIGxvZ291dAotIEVudmlyb25tZW50LXNwZWNpZmljIGNvb2tpZSBhdHRyaWJ1dGVzIChzZWN1cmUvU2FtZVNpdGUpCi0gQ09SUyBjb25maWd1cmF0aW9uIHZpYSBlbnZpcm9ubWVudCB2YXJpYWJsZXMKLSBKV1RfU0VDUkVUIHJlcXVpcmVkIHZpYSBlbnZpcm9ubWVudCB2YXJpYWJsZQoKIyMjIyBQbGFubmVkIEltcHJvdmVtZW50cwotIFRva2VuIHJvdGF0aW9uIG9uIGV2ZXJ5IHJlZnJlc2ggKGN1cnJlbnRseTogcmVmcmVzaCB0b2tlbiB2YWxpZCBmb3IgNyBkYXlzKQotIENTUkYgdG9rZW4gaW50ZWdyYXRpb24gZm9yIGFkZGl0aW9uYWwgcHJvdGVjdGlvbgotIFJhdGUgbGltaXRpbmcgb24gYXV0aCBlbmRwb2ludHMKCiMjIyBUcmFkZS1vZmZzICYgTGltaXRhdGlvbnMKLSAqKkNTUkYqKjogRGlzYWJsZWQgZm9yIHN0YXRlbGVzcyBKV1QgZmxvdy4gTWl0aWdhdGVkIGJ5IFNhbWVTaXRlPVN0cmljdCBpbiBwcm9kdWN0aW9uLiBDb25zaWRlciBhZGRpbmcgQ1NSRiB0b2tlbnMgZm9yIGhpZ2hlciBzZWN1cml0eSByZXF1aXJlbWVudHMuCi0gKipUb2tlbiBSb3RhdGlvbioqOiBDdXJyZW50bHkgcmVmcmVzaCB0b2tlbnMgYXJlIHZhbGlkIGZvciA3IGRheXMuIEFkZGluZyByb3RhdGlvbiBvbiBlYWNoIHVzZSBwcm92aWRlcyB0aGVmdCBkZXRlY3Rpb24gYnV0IGluY3JlYXNlcyBjb21wbGV4aXR5LgotICoqU3RhdGVsZXNzbmVzcyoqOiBKV1RzIGFyZSBzdGF0ZWxlc3MsIGJ1dCB0b2tlbiByZXZvY2F0aW9uIHJlcXVpcmVzIFJlZGlzIHN0YXRlLgotICoqU2Vzc2lvbiBCaW5kaW5nKio6IFJlZnJlc2ggdG9rZW5zIGFyZSBib3VuZCB0byB0aGUgb3JpZ2luYWwgZGV2aWNlL3Nlc3Npb24uCgojIyDwn6eqIFRlc3RpbmcKClJ1biBpbnRlZ3JhdGlvbiB0ZXN0cyB1c2luZyBNYXZlbjoKYGBgYmFzaAouL212bncgdGVzdApgYGAKVGVzdHMgdXNlIEgyIGRhdGFiYXNlIGFuZCBlbWJlZGRlZCBSZWRpcyBjb25maWd1cmF0aW9uIGZvciBpc29sYXRpb24uCgojIyDwn5OdIExpY2Vuc2UKTUlUCg==
+# Spring Boot + React Fullstack Demo
+
+A production-oriented full-stack demo application demonstrating secure authentication patterns with HttpOnly Cookie-based refresh tokens, session management, and configurable security settings.
+
+## 🚀 Key Features
+
+- **Secure Authentication**:
+  - **HttpOnly Cookie**: Refresh tokens stored in HttpOnly cookies to prevent XSS attacks.
+  - **Session Management**: Access tokens stored in `sessionStorage` (tab-specific).
+  - **Blacklisting**: Active tokens blacklisted on logout using Redis.
+- **Environment-Based Security**:
+  - **CORS**: Configurable per environment (dev/test/prod profiles).
+  - **Cookie Attributes**: `secure` and `SameSite` vary by environment.
+  - **Secrets**: JWT_SECRET managed via environment variables.
+
+## 🏗 Architecture Overview
+
+### Roles by Component
+
+- **Backend (Spring Boot)**: Issues JWT tokens, validates credentials, manages session state, enforces security policies, handles token blacklist in Redis.
+- **Frontend (React)**: Manages UI state, stores access token in sessionStorage, triggers refresh on 401 errors, handles login/logout UI flow.
+- **Redis**: Stores token blacklist for immediate session revocation, acts as session state store for active sessions.
+
+### Token Responsibilities
+
+- **Access Token**: Short-lived (1 hour), used for API authorization, stored in sessionStorage to prevent XSS access.
+- **Refresh Token**: Long-lived (7 days), used to obtain new access tokens, stored in HttpOnly Cookie to prevent XSS theft.
+
+### Why sessionStorage?
+
+We chose `sessionStorage` over `localStorage` because it is **tab-specific** and **cleared when the tab closes**. This provides better security isolation between sessions and reduces the risk of token reuse across different browsing contexts. It also automatically handles the "logout on browser close" behavior that many applications expect.
+
+### Why Blacklist?
+
+JWTs are stateless by design, but we still need the ability to **immediately revoke sessions** (e.g., user clicks logout, admin terminates a session, security breach detected). A Redis-backed blacklist allows O(1) lookup during token validation, providing the best of both worlds: mostly stateless JWTs with instant revocation capability when needed.
+
+## 🛠 Tech Stack
+
+- **Backend**: Spring Boot 3.x, Spring Security 6, JPA, Redis, MySQL/H2
+- **Frontend**: React 18, TypeScript, Axios, Context API
+- **Testing**: JUnit 5, MockMvc, TestContainers-ready
+
+## 🏃‍♂️ Getting Started
+
+### Prerequisites
+- Java 17+
+- Node.js 18+
+- Docker (optional, for Redis/MySQL)
+
+### Backend Setup
+
+1. **Configure Environment**:
+   Set the required environment variables. JWT_SECRET is mandatory and must be at least 32 bytes long.
+   ```bash
+   export JWT_SECRET=your_secure_random_secret_key_at_least_32_bytes
+   export CORS_ALLOWED_ORIGINS=http://localhost:3000
+   ```
+   
+   **Required Environment Variables**:
+   - `JWT_SECRET`: Secure random secret key (at least 32 bytes)
+   - `CORS_ALLOWED_ORIGINS`: Frontend application origin(s)
+   
+   **Optional Environment Variables**:
+   - `JWT_EXPIRATION`: Access token expiration in milliseconds (default: 3600000)
+   - `JWT_REFRESH_EXPIRATION`: Refresh token expiration in milliseconds (default: 86400000)
+
+2. **Run with Maven**:
+   ```bash
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+### Frontend Setup
+
+1. **Configure Environment**:
+   Create a `.env` file in the `frontend` directory:
+   ```env
+   REACT_APP_API_BASE_URL=http://localhost:8080/api
+   ```
+
+2. **Install & Run**:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+## 🔒 Security Implementation Details
+
+### Authentication Flow
+1. **Login**: Client sends credentials. Server validates and returns:
+   - `accessToken` (JSON body) -> Stored in `sessionStorage`.
+   - `refreshToken` (HttpOnly Cookie) -> Automatically handled by browser.
+2. **Access**: Client sends `Authorization: Bearer <token>` header.
+3. **Refresh**: When access token expires (401), client calls `/refresh`. Server validates cookie and returns new access token.
+4. **Logout**: Client calls `/logout`. Server invalidates cookie and blacklists access token in Redis.
+
+### Cookie Security by Environment
+- **Development**: `secure=false`, `SameSite=Lax` (allows HTTP for localhost)
+- **Test**: `secure=false`, `SameSite=Strict` (stricter CSRF protection)
+- **Production**: `secure=true`, `SameSite=Strict` (HTTPS required)
+
+### Current Status
+
+#### Implemented
+- HttpOnly Cookie for refresh tokens
+- Access token in sessionStorage
+- Redis-based token blacklist on logout
+- Environment-specific cookie attributes (secure/SameSite)
+- CORS configuration via environment variables
+- JWT_SECRET required via environment variable
+
+#### Planned Improvements
+- Token rotation on every refresh (currently: refresh token valid for 7 days)
+- CSRF token integration for additional protection
+- Rate limiting on auth endpoints
+
+### Trade-offs & Limitations
+- **CSRF**: Disabled for stateless JWT flow. Mitigated by SameSite=Strict in production. Consider adding CSRF tokens for higher security requirements.
+- **Token Rotation**: Currently refresh tokens are valid for 7 days. Adding rotation on each use provides theft detection but increases complexity.
+- **Statelessness**: JWTs are stateless, but token revocation requires Redis state.
+- **Session Binding**: Refresh tokens are bound to the original device/session.
+
+## 🧪 Testing
+
+Run integration tests using Maven:
+```bash
+./mvnw test
+```
+Tests use H2 database and embedded Redis configuration for isolation.
+
+## 📝 License
+MIT
